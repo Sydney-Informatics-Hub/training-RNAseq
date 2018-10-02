@@ -1,7 +1,6 @@
 # Contributing
 
 The [Sydney Informatics Hub][sih-site] welcomes your comments, fixes and suggestions to improve our training courses!
-
 Using the platform and templates developed by [The Carpentries][carpentries-site], you can easily fork out GitHub repos and make edits.
 
 [Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,

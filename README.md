@@ -15,19 +15,16 @@ This is the overview page for the Artemis training course series. The individual
 We welcome all contributions to improve our courses! Maintainers will do their best to help you if you have any
 questions, concerns, or experience any difficulties along the way.
 
-We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
+We'd like to ask you to familiarise yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
 The Carpentries' [detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even how to write new episodes.
 
 ## Maintainer(s)
 
-* Hayim Dar, Nathaniel Butterworth, Tracy Chew
+* Hayim Dar
+* Nathaniel Butterworth
+* Tracy Chew.
 
-## Authors
+Contact [sih.training@sydney.edu.au](mailto:sih.training@sydney.edu.au).
 
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
-
-## Citation
-
-To cite this lesson, please consult with [CITATION](CITATION)
 
 [lesson-example]: https://carpentries.github.io/lesson-example
