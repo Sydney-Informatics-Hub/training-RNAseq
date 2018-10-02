@@ -22,10 +22,10 @@ permalink: index.html  # Is the only page that don't follow the partner /:path/i
 
 | Lesson    | Overview |
 | ------- | ---------- |
-| [Introduction to Artemis HPC](https://datacarpentry.github.io/organization-genomics/) | Introduces USyd's High Performance Computer (HPC), ‘Artemis’. We cover connecting and navigating Artemis, available software, and how to submit and monitor jobs using the PBS Pro scheduler.|
-| [Introduction to the Research Data Store and Data Transfer](https://datacarpentry.github.io/shell-genomics/) |  Learn how to transfer data between your local computer, external sources, the University's Research Data Store (RDS) and Artemis HPC. |
-|[Intermediate Artemis HPC](https://datacarpentry.github.io/wrangling-genomics/) | Learn how to automate multiple-run analyses with job arrays and do simple bash scripting on Artemis. The live training consists of two hours of instruction and practical exercises. |
-|[Matlab on Artemis: The MDCS](http://www.datacarpentry.org/cloud-genomics/) | Artemis HPC hosts a Matlab Distributed Computing Server (MDCS) - this allows users to submit MATLAB jobs directly to Artemis from within their local Matlab instance on their machines. Come and learn how to use this service. |
+| [Introduction to Artemis HPC](https://pages.github.sydney.edu.au/informatics/training.artemis.introhpc) | Introduces USyd's High Performance Computer (HPC), ‘Artemis’. We cover connecting and navigating Artemis, available software, and how to submit and monitor jobs using the PBS Pro scheduler.|
+| [Introduction to the Research Data Store and Data Transfer](https://pages.github.sydney.edu.au/informatics/training.artemis.rds) |  Learn how to transfer data between your local computer, external sources, the University's Research Data Store (RDS) and Artemis HPC. |
+|[Intermediate Artemis HPC](https://pages.github.sydney.edu.au/informatics/training.artemis.interhpc) | Learn how to automate multiple-run analyses with job arrays and do simple bash scripting on Artemis. The live training consists of two hours of instruction and practical exercises. |
+|[Matlab on Artemis: The MDCS](https://pages.github.sydney.edu.au/informatics/training.artemis.mdcs) | Artemis HPC hosts a Matlab Distributed Computing Server (MDCS) - this allows users to submit MATLAB jobs directly to Artemis from within their local Matlab instance on their machines. Come and learn how to use this service. |
 
 
 
