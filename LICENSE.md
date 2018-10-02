@@ -5,18 +5,18 @@ root: .
 ---
 ## Instructional Material
 
-All Software Carpentry and Data Carpentry instructional material is
-made available under the [Creative Commons Attribution
-license][cc-by-human]. The following is a human-readable summary of
-(and not a substitute for) the [full legal text of the CC BY 4.0
-license][cc-by-legal].
+### Sydney Informatics Hub
+
+Lessons published here are made available under the [Creative Commons Attribution, Non-Commercial
+license][cc-nc-human]. The following is a human-readable summary of
+(and not a substitute for) the [full legal text of the CC BY-NC 4.0
+license][cc-nc-legal].
+
 
 You are free:
 
 * to **Share**---copy and redistribute the material in any medium or format
 * to **Adapt**---remix, transform, and build upon the material
-
-for any purpose, even commercially.
 
 The licensor cannot revoke these freedoms as long as you follow the
 license terms.
@@ -24,12 +24,13 @@ license terms.
 Under the following terms:
 
 * **Attribution**---You must give appropriate credit (mentioning that
-  your work is derived from work that is Copyright © Software
-  Carpentry and, where practical, linking to
-  http://software-carpentry.org/), provide a [link to the
-  license][cc-by-human], and indicate if changes were made. You may do
+  your work is derived from work that is Copyright © Sydney Informatics Hub and, where practical, linking to
+  [https://informatics.sydney.edu.au/](https://informatics.sydney.edu.au/)), provide a [link to the
+  license][cc-nc-human], and indicate if changes were made. You may do
   so in any reasonable manner, but not in any way that suggests the
   licensor endorses you or your use.
+* **NonCommercial** — You may not use the material for commercial purposes, including
+  commercial advantage or monetary compensation.
 
 **No additional restrictions**---You may not apply legal terms or
 technological measures that legally restrict others from doing
@@ -45,10 +46,16 @@ Notices:
   rights such as publicity, privacy, or moral rights may limit how you
   use the material.
 
+### The Carpentries
+
+All Software Carpentry and Data Carpentry instructional material is
+  made available under the [Creative Commons Attribution
+  license][cc-by-human].
+
 ## Software
 
 Except where otherwise noted, the example programs and other software
-provided by Software Carpentry and Data Carpentry are made available under the
+provided by the Sydney Informatics Hub are made available under the
 [OSI][osi]-approved
 [MIT license][mit-license].
 
@@ -76,6 +83,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 "Software Carpentry" and "Data Carpentry" and their respective logos
 are registered trademarks of [Community Initiatives][CI].
 
+[cc-nc-human]: https://creativecommons.org/licenses/by-nc/4.0/
+[cc-nc-legal]: https://creativecommons.org/licenses/by-nc/4.0/legalcode
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
 [mit-license]: https://opensource.org/licenses/mit-license.html

@@ -1,7 +1,10 @@
 # Contributing
 
+The [Sydney Informatics Hub][sih-site] welcomes your comments, fixes and suggestions to improve our training courses!
+Using the platform and templates developed by [The Carpentries][carpentries-site], you can easily fork out GitHub repos and make edits.
+
 [Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
-and we welcome contributions of all kinds:
+and they welcome contributions of all kinds:
 new lessons,
 fixes to existing material,
 bug reports,
@@ -14,8 +17,6 @@ you agree that we may redistribute your work under [our license](LICENSE.md).
 In exchange,
 we will address your issues and/or assess your change proposal as promptly as we can,
 and help you become a member of our community.
-Everyone involved in [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-agrees to abide by our [code of conduct](CODE_OF_CONDUCT.md).
 
 ## How to Contribute
 
@@ -26,13 +27,13 @@ or a factual error.
 This is a good way to introduce yourself
 and to meet some of our community members.
 
-1.  If you do not have a [GitHub][github] account,
+1.  If you do not have a [University of Sydney GitHub][usyd-github] account,
     you can [send us comments by email][email].
     However,
     we will be able to respond more quickly if you use one of the other methods described below.
 
-2.  If you have a [GitHub][github] account,
-    or are willing to [create one][github-join],
+2.  If you have a [University of Sydney GitHub][usyd-github] account,
+    or are willing to [create one][usyd-github-join],
     but do not know how to use Git,
     you can report problems or suggest improvements by [creating an issue][issues].
     This allows us to assign the item to someone
@@ -46,8 +47,8 @@ and to meet some of our community members.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/swcarpentry/FIXME>,
-    which can be viewed at <https://swcarpentry.github.io/FIXME>.
+    please work in <https://github.sydney.edu.au/informatics/training.artemis/>,
+    which can be viewed at <https://pages.github.sydney.edu.au/informatics/training.artemis/>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,
@@ -71,10 +72,6 @@ from writing new exercises and improving existing ones
 to updating or filling in the documentation
 and submitting [bug reports][issues]
 about things that don't work, aren't clear, or are missing.
-If you are looking for ideas, please see the 'Issues' tab for
-a list of issues associated with this repository,
-or you may also look at the issues for [Data Carpentry][dc-issues]
-and [Software Carpentry][swc-issues] projects.
 
 Comments on issues and reviews of pull requests are just as welcome:
 we are smarter together than we are on our own.
@@ -127,13 +124,23 @@ Lastly, published copies of all the lessons are available in the `gh-pages` bran
 repository for reference while revising.
 
 ## Other Resources
+Get in touch with us [by email][sih-email]! Be sure to have a look at our [training site][sih-training]. And come say hi next [Hacky Hour](https://informatics.sydney.edu.au/hackyhour/)!
 
 General discussion of [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-happens on the [discussion mailing list][discuss-list],
+happens on their [discussion mailing list][discuss-list],
 which everyone is welcome to join.
-You can also [reach us by email][email].
+You can also [reach them by email][email].
 
-[email]: mailto:admin@software-carpentry.org
+[sih-email]: mailto:sih.training@sydney.edu.au
+[sih-site]: https://informatics.sydney.edu.au
+[sih-training]: https://informatics.sydney.edu.au/training
+[sih-lessons]: https://pages.github.sydney.edu.au/informatics/training.io/
+[issues]: https://github.sydney.edu.au/informatics/training.artemis/issues/
+[usyd-github]: https://github.sydney.edu.au
+[usyd-github-join]: https://github.sydney.edu.au/join
+
+[carpentries-site]: https://carpentries.org/
+[email]: mailto:sih.training@sydney.edu.au
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: http://datacarpentry.org/lessons/
 [dc-site]: http://datacarpentry.org/
@@ -142,7 +149,6 @@ You can also [reach us by email][email].
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
 [how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
-[issues]: https://guides.github.com/features/issues/
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: https://software-carpentry.org/lessons/
 [swc-site]: https://software-carpentry.org/
