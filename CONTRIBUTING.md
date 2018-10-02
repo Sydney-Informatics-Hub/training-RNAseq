@@ -1,7 +1,11 @@
 # Contributing
 
+The [Sydney Informatics Hub][sih-site] welcomes your comments, fixes and suggestions to improve our training courses!
+
+Using the platform and templates developed by [The Carpentries]({{ site.carpentries_site }}), you can easily fork out GitHub repos and make edits.
+
 [Software Carpentry][swc-site] and [Data Carpentry][dc-site] are open source projects,
-and we welcome contributions of all kinds:
+and they welcome contributions of all kinds:
 new lessons,
 fixes to existing material,
 bug reports,
@@ -14,8 +18,6 @@ you agree that we may redistribute your work under [our license](LICENSE.md).
 In exchange,
 we will address your issues and/or assess your change proposal as promptly as we can,
 and help you become a member of our community.
-Everyone involved in [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-agrees to abide by our [code of conduct](CODE_OF_CONDUCT.md).
 
 ## How to Contribute
 
@@ -127,13 +129,19 @@ Lastly, published copies of all the lessons are available in the `gh-pages` bran
 repository for reference while revising.
 
 ## Other Resources
+Get in touch with us [by email][sih-email]! Be sure to have a look at our [training site][sih-training]. And come say hi next [Hacky Hour](https://informatics.sydney.edu.au/hackyhour/)!
 
 General discussion of [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
-happens on the [discussion mailing list][discuss-list],
+happens on their [discussion mailing list][discuss-list],
 which everyone is welcome to join.
-You can also [reach us by email][email].
+You can also [reach them by email][email].
 
-[email]: mailto:admin@software-carpentry.org
+[sih-email]: mailto:sih.training@sydney.edu.au
+[sih-site]: https://informatics.sydney.edu.au
+[sih-training]: https://informatics.sydney.edu.au/training
+[sih-lessons]: https://pages.github.sydney.edu.au/informatics/training.io/
+
+[email]: mailto:sih.training@sydney.edu.au
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: http://datacarpentry.org/lessons/
 [dc-site]: http://datacarpentry.org/
