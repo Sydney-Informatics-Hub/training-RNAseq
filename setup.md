@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-# Get a shell terminal emulator
+## Get a shell terminal emulator
 
 To access Artemis HPC, and follow this lesson, you will need a **'terminal emulator'** program installed on your computer. Often just called a 'terminal', or 'shell terminal', 'shell client', terminal emulators give you a window with a _command line interface_ through which you can send commands to be executed by your computer.
 
