@@ -34,17 +34,29 @@ Mac operating systems come with a terminal program, called Terminal. Just look f
 
 If you're using a Windows machine, don't panic! You might not have used 'CMD' since Windows 95 but, rest assured, Windows still has a couple of terminal programs and shells buried in the Programs menu.
 
-However, those aren't going to work for us, as you'll need extra programs and utilities to connect to Artemis, such as an SSH implementation. To use Artemis on Windows, you have a couple of options:
+However, those aren't going to work for us, as you'll need extra programs and utilities to connect to Artemis, such as an _SSH_ implementation. To use Artemis on Windows, you have a couple of options:
 
-#### 1. PuTTY
+#### A. X-Win32 (recommended)
+
+[X-Win32](https://www.starnet.com/xwin32/) is full-featured X-server and terminal emulator for Windows. USyd [provides a license](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/316) for it; however, the download link is restricted to staff so, students, get a copy [here](/data/x-win140-54sf.exe). Install, and follow the instructions on the USyd-ICT page to activate -- you'll need to be on the USyd network or [VPN](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/519/kw/vpn) to do so.
+
+Then setup as follows:
+
+1. Create a new 'Manual' connection
+2. Fill in the connection details:
+  - Name: **eg "Artemis"**
+  - Host: **hpc.sydney.edu.au**
+  - Login: **\<Unikey\>**
+  - Command: **/usr/bin/xterm -ls -fa 'consolas' -fs 11**
+  - Password: **\<password\>**
+3. Click 'Save'
+4. Click 'Launch'!
+
+
+#### B. PuTTY
 
 Head to [https://putty.org](https://putty.org) and download PuTTY, an SSH and telnet client. You can install it to your computer, or just download the 'binary' and run it directly. Create a new session for use with Artemis as follows:
 
-
-
-#### 2. VcXsrv
-
-[VcXsrv](https://sourceforge.net/projects/vcxsrv/) is an open-source terminal emulator and X-server for Windows. Download and install it, and then set-up as follows:
 
 
 {% include links.md %}
