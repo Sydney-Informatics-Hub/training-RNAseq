@@ -141,7 +141,7 @@ If this is the first time connecting to Artemis, you will be asked to authorise 
 * If using 'PuTTY', a terminal window will appear and prompt you for your **username**, and then your **password**. Once entered, you should be logged on to Artemis! A command prompt on Artemis will appear in that window.
 
 <figure>
-  <img src="/fig/01_xwin.png" style="margin:10px;height:200px"/>
+  <img src="/fig/01_xwin.png" style="margin:10px;height:220px"/>
   <img src="/fig/01_putty.png" style="margin:10px;height:300px"/>
   <figcaption> Access granted! X-Win32 (left) trims the welcome messages, PuTTY (right) </figcaption>
 </figure><br>

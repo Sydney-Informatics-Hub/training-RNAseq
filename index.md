@@ -8,9 +8,13 @@ permalink: index.html  # Is the only page that don't follow the partner /:path/i
 
 **Target audience:** Students and staff who would like to learn how to run compute jobs on Artemis HPC. Participants must have a valid USyd unikey.
 
-**Follow-on courses:** This course is designed as a 2-part session, with ‘_Introduction to the Artemis HPC_’ in the morning and ‘_Data transfer and RDS for HPC_’ in the afternoon. It is recommended to register for both, however you may choose to take these courses on separate days as suits your needs.
+**Follow-on courses:** This course is part one of the **[Artemis HPC Training Series](https://pages.github.sydney.edu.au/informatics/training.artemis/)**.
 
-‘_Intermediate Artemis HPC_’ extends students knowledge of the PBS Pro scheduling system, and builds scripting skills for automating large workflows on HPC.
+This first lesson is intended as part one of a pair, with ‘_Introduction to the Artemis HPC_’ in the morning and [‘_Data transfer and RDS for HPC_’](https://pages.github.sydney.edu.au/informatics/training.artemis.rds) in the afternoon. It is recommended to register for both, however you may choose to take these courses on separate days as suits your needs.
+
+The third course in the series, [‘_Intermediate Artemis HPC_’](https://pages.github.sydney.edu.au/informatics/training.artemis.interhpc), extends users' knowledge of the PBS Pro scheduling system, and builds scripting skills for automating large workflows on HPC.
+
+The final lesson, ['_Matlab on Artemis: The MDCS_'](https://pages.github.sydney.edu.au/informatics/training.artemis.mdcs), is an optional course for users of MATLAB who would like to submit jobs directly to the cluster from their local computers.
 
 > ## Prerequisites
 > Competency on the Unix/Linux command line:
