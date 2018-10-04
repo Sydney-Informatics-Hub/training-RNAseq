@@ -4,7 +4,7 @@ title: Setup
 
 ## Get a shell terminal emulator
 
-To access Artemis HPC, and follow this lesson, you will need a **'terminal emulator'** program installed on your computer. Often just called a 'terminal', or 'shell terminal', 'shell client', terminal emulators give you a window with a _command line interface_ through which you can send commands to be executed by your computer.
+To connect to Artemis HPC, and follow this lesson, you will need a **'terminal emulator'** program installed on your computer. Often just called a 'terminal', or 'shell terminal', 'shell client', terminal emulators give you a window with a _command line interface_ through which you can send commands to be executed by your computer.
 
 More precisely, these commands are executed by your _shell_, which is a program designed to do just that: execute commands! The most commonly used shell is 'Bash', and we'll generally refer to the shell as a 'Bash shell', and to scripts as 'Bash scripts'. There are other shells, and each has its own set of extra commands or syntaxes it can accept -- its own _scripting languauge_.
 
@@ -29,6 +29,8 @@ Mac operating systems come with a terminal program, called Terminal. Just look f
   <img src="/fig/s_terminal_app.png" height="200">
   <figcaption> <b>Terminal</b> is OSX's native terminal emulator.</figcaption>
 </figure><br>
+
+We also recommend installing [XQuartz](https://www.xquartz.org/), which will replace OSX's native X-Window server. XQuartz has some extra features that may offer better performance when using GUI programs. You'll need to log out and back in again after installing XQuartz in order for it to activate.
 
 <br>
 ### Windows
@@ -80,6 +82,40 @@ Head to [https://putty.org](https://putty.org) and download PuTTY. You can insta
 
    <img src="/fig/s_putty.png" style="margin:10px;height:400px" >
 2. Name this session **"Artemis"** and click 'Save'
+
+<br>
+### Off-campus access
+
+If you're attempting this training by yourself, or following on **[Zoom](https://uni-sydney.zoom.us/j/3967698889)**, _off-campus_ then you'll need to connect to the USyd internet network first. There are a couple ways to do this:
+
+#### 1. The USyd VPN
+
+**VPN** (Virtual Private Network) is a protocol that allows you to tap into a local private network remotely. Follow USyd ICT's instructions [here](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/316). Once you've connected to the VPN, the above connection methods will work, just as though you were on-campus.
+
+#### 2. Use the Artemis Jump server
+
+Artemis provides a 'gateway' server, called **Jump**, that allows connections from outside the University network, and is itself on the network. From the Jump server, you can then connect to Artemis directly. If using the Jump server, you will need to edit the **host address** used in the instructions above:
+
+* Instead of **hpc.sydney.edu.au** _use_ **jump.research.sydney.edu.au**
+
+This will connect you to Jump, rather than Artemis itself. You can then connect to Artemis as outlined in [Episode 1](/01-intro).
+
+
+### Graphical login nodes
+
+There is one final way to access Artemis, and that is using our _graphical login nodes_. These special are graphics-enabled login servers which host 'NoMachine', a kind of remote desktop service.
+
+To use the graphical login nodes:
+* Download and install the [NoMachine Enterprise Client](https://pages.github.sydney.edu.au/rc/Artemis-HPC-glogin/) for your operating system. Please don't download the client from NoMachine directly, as their current version may not work with Artemis.
+* If you're using MacOS, you need to install [XQuartz](https://www.xquartz.org/).
+* Download the [glogin.nxs](https://pages.github.sydney.edu.au/rc/Artemis-HPC-glogin/glogin.nxs) session file to your computer.
+
+To connect:
+* Double-click or run the **glogin.nxs** shortcut you downloaded (it will open NoMachine Client).
+* A NoMachine window should start, asking for a username and password.
+* Replace “YOUR_UNIKEY” with your UniKey, then enter your UniKey password in the password field, then click ‘OK’.
+* A short while later, an Artemis terminal window should open.
+
 
 <br>
 
