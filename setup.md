@@ -16,12 +16,12 @@ More precisely, these commands are executed by your _shell_, which is a program 
 You don't need to worry too much about this! You just need **a** shell -- almost all will understand the commands we're going to be using.
 
 <br>
-### Linux systems
+## Linux systems
 
 If you use Linux, then chances are you already know your shell and how to use it. Basically, just open your preferred terminal program and off you go! An X-Window server (X11) may also be useful if you want to be able to use GUIs; again, if you're using Linux you probably have one, and if you don't have one, it's probably because you intentionally disabled it!
 
 <br>
-### OSX (Mac computers and laptops)
+## OSX (Mac computers and laptops)
 
 Mac operating systems come with a terminal program, called Terminal. Just look for it in your Applications folder, or hit Command-Space and type 'terminal'. You may find that other, 3rd party terminal programs are more user-friendly and powerful -- I use [Iterm2](https://www.iterm2.com/).
 
@@ -33,17 +33,17 @@ Mac operating systems come with a terminal program, called Terminal. Just look f
 We also recommend installing [XQuartz](https://www.xquartz.org/), which will replace OSX's native X-Window server. XQuartz has some extra features that may offer better performance when using GUI programs. You'll need to log out and back in again after installing XQuartz in order for it to activate.
 
 <br>
-### Windows
+## Windows
 
 If you're using a Windows machine, don't panic! You might not have used 'CMD' since Windows 95 but, rest assured, Windows still has a couple of terminal programs and shells buried in the Programs menu.
 
 However, those aren't going to work for us, as you'll need extra programs and utilities to connect to Artemis, such as an _SSH_ implementation. To use Artemis on Windows, you have a couple of options:
 
-#### A. X-Win32 (recommended)
+### A. X-Win32 (recommended)
 
 [X-Win32](https://www.starnet.com/xwin32/) is full-featured X-server and terminal emulator for Windows. USyd [provides a license](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/316) for it; however, the download link is restricted to staff so, students, get a copy [here](/data/x-win140-54sf.exe). Install, and follow the instructions on the USyd-ICT page to activate -- you'll need to be on the USyd network or [VPN](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/519/kw/vpn) to do so.
 
-> ## Windows Defender and internet permissions
+> <h2 data-toc-skip> Windows Defender and internet permissions</h2>
 >
 > Windows Defender (Windows' firewall/antivirus) will probably tell you that certain access has been blocked for X-Win32 and its built-in sound server.
 >
@@ -69,7 +69,7 @@ Then setup as follows:
 3. Click 'Save'
 
 <br>
-#### B. PuTTY
+### B. PuTTY
 
 PuTTY, an SSH and telnet client, is another good option if you can't or don't want to install X-Win32. However, note that PuTTY **does not** provide an X11 server, so you won't be able to use GUI programs on Artemis with _just_ PuTTY.
 
@@ -84,15 +84,15 @@ Head to [https://putty.org](https://putty.org) and download PuTTY. You can insta
 2. Name this session **"Artemis"** and click 'Save'
 
 <br>
-### Off-campus access
+## Off-campus access
 
 If you're attempting this training by yourself, or following on **[Zoom](https://uni-sydney.zoom.us/j/3967698889)**, _off-campus_ then you'll need to connect to the USyd internet network first. There are a couple ways to do this:
 
-#### 1. The USyd VPN
+### 1. The USyd VPN
 
 **VPN** (Virtual Private Network) is a protocol that allows you to tap into a local private network remotely. Follow USyd ICT's instructions [here](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/316). Once you've connected to the VPN, the above connection methods will work, just as though you were on-campus.
 
-#### 2. Use the Artemis Jump server
+### 2. Use the Artemis Jump server
 
 Artemis provides a 'gateway' server, called **Jump**, that allows connections from outside the University network, and is itself on the network. From the Jump server, you can then connect to Artemis directly. If using the Jump server, you will need to edit the **host address** used in the instructions above:
 
@@ -101,7 +101,7 @@ Artemis provides a 'gateway' server, called **Jump**, that allows connections fr
 This will connect you to Jump, rather than Artemis itself. You can then connect to Artemis as outlined in [Episode 1](/01-intro).
 
 
-### Graphical login nodes
+## Graphical login nodes
 
 There is one final way to access Artemis, and that is using our _graphical login nodes_. These special are graphics-enabled login servers which host 'NoMachine', a kind of remote desktop service.
 

@@ -27,6 +27,10 @@ GitHub where `site.github.url` will be defined.
     <meta name="search-domain" value="{{ search_domain_url }}">
     <link rel="stylesheet" type="text/css" href="{{ page.root }}/assets/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="{{ page.root }}/assets/css/bootstrap-theme.css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="{{ page.root }}/assets/css/bootstrap-toc.css" /> -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v0.4.1/dist/bootstrap-toc.min.css">
+
     <link rel="stylesheet" type="text/css" href="{{ page.root }}/assets/css/lesson.css" />
     <link rel="stylesheet" type="text/css" href="{{ page.root }}/assets/css/syntax.css" />
 
@@ -40,16 +44,33 @@ GitHub where `site.github.url` will be defined.
 	<![endif]-->
     <title>{{ site.title }}{% if page.title %}: {{ page.title }}{% endif %}</title>
   </head>
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container">
       {% include navbar.html %}
-{{ content }}
-      {% if site.kind == "workshop" %}
-      {% include workshop_footer.html %}
-      {% else %}
-      {% include lesson_footer.html %}
-      {% endif %}
+      <div class="row">
+        <!-- sidebar, which will move to the top on a small screen -->
+        <div class="col-md-3 col-sm-2">
+          <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
+        </div>
+        <!-- main content area -->
+        <div class="col-md-8 col-sm-9">
+        {{ content }}
+        {% if site.kind == "workshop" %}
+        {% include workshop_footer.html %}
+        {% else %}
+        {% include lesson_footer.html %}
+        {% endif %}
+        </div>
+      </div>
     </div>
     {% include javascript.html %}
+    <script>
+    $("blockquote > h2").attr("data-toc-skip"," ");
+    $(".text-right > h3").attr("data-toc-skip"," ");
+    $(".text-left > h3").attr("data-toc-skip"," ");
+    $("h3.text-left").attr("data-toc-skip"," ");
+    $("h3.text-right").attr("data-toc-skip"," ");
+    $(".maintitle").attr("data-toc-skip"," ");
+    </script>
   </body>
 </html>

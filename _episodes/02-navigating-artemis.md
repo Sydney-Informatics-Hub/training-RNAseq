@@ -18,7 +18,7 @@ This episode gets users familiar with the Artemis servers, available software an
 # The Artemis directory structure
 
 <br>
-### 1. When you first arrive
+## When you first arrive
 
 At the end of last lesson we logged on to Artemis, and were presented with a command prompt in a terminal window. The last line in that window would look something like this:
 
@@ -55,7 +55,7 @@ This is your **home** directory. Every user on Artemis (and any Linux system) ha
 {: .callout}
 
 <br>
-### 2. The three branches of the Artemis tree
+<h2 data-toc-text="Artemis' 3 main directories">The three branches of the Artemis tree</h2>
 
 <figure>
   <img src="/fig/02_arttree.png" style="margin:10px"/>
@@ -68,11 +68,11 @@ The Artemis filesystem has three main branches: **/home**, **/project**, and **/
 
 **/home** is where your data is. But not your _project_ data, just your own personal data. If you have any project-related data that needs to remain _private_ to you alone then also keep that in **/home**, as only you can see or read files in your home directory. Home directories are allocated **10 GB** of storage only.
 
-### ii. /project
+### iii. /project
 
 The **/project** branch is where researchers on a project should keep all the data and programs or scripts that are _currently_ being used. We say 'currently' because project directories are allocated only **1 TB** of storage space -- that may sound like a lot, but this space is shared between all users of your project, and it runs out faster than you think. Data that you're not currently working on should be deleted or moved back to its permanent storage location (which should be the Research Data Store<sup id="a1">[1](#f1)</sup>).
 
-This also means that everyone working on your project can see all files in the project directory by default.<sup id="a1">[1](#f1)</sup>
+This also means that everyone working on your project can see all files in the project directory by default.<sup id="a2">[2](#f2)</sup>
 
 Project directories are all subfolders of **/project**, and will have names like
 
@@ -114,7 +114,15 @@ So, for example, change into the project directory of the 'Training' project wit
 {: .output}
 
 
+### iii. /scratch
 
+
+
+## Writing script files
+
+### Text editors
+
+### 1. Nano
 
 
 <br>   
@@ -123,7 +131,7 @@ ___
 **Notes**   
 <sup id="f1">1[↩](#a1)</sup> The Research Data Store (RDS) is covered in the 2nd lesson of this series, [Introduction to the Research Data Store and Data Transfer](https://pages.github.sydney.edu.au/informatics/training.artemis.rds).
 
-<sup id="f1">2[↩](#a1)</sup> There are ways to change the user permissions of files and folders in Linux, but we won't cover that here. Don't try it unless you know what you're doing!
+<sup id="f2">2[↩](#a2)</sup> There are ways to change the user permissions of files and folders in Linux, but we won't cover that here. Don't try it unless you know what you're doing!
 
 ___
 <br>

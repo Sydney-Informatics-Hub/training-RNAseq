@@ -94,6 +94,7 @@ $codeblock-padding: 5px !default;
     border-color: $color;
     margin-top: 0px;
     margin-left: -$codeblock-padding; // to move back to the left margin of the enclosing blockquote
+    data-toc-skip: " ";
   }
   h2:before {
     font-family: 'Glyphicons Halflings';
