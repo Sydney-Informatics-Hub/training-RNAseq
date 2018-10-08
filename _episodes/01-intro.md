@@ -79,7 +79,7 @@ Depending on your computer's operating system, there may be several ways to conn
 Linux and Mac both have native terminal apps, so you only need to open them. You may also have installed one on your Windows machine.<sup id="a1">[1](#f1)</sup> Go ahead and do that now. The last line displayed in your terminal window should have some information about your computer's name, and you user name, follwed by a **$** symbol. This is the **command prompt** -- you type your commands after the '$'.
 
 <figure>
-  <img src="/fig/01_bash.png" style="margin:10px;height:330px"/>
+  <img src="{{ page.root }}/fig/01_bash.png" style="margin:10px;height:330px"/>
   <figcaption> An iTerm2 terminal window on Mac</figcaption>
 </figure><br>
 
@@ -116,7 +116,7 @@ Are you sure you want to continue connecting (yes/no)?
 Enter 'yes'. You will then be asked for your password; type it and press 'enter'. and you should then be logged in!
 
 <figure>
-  <img src="/fig/01_granted.png" style="margin:10px;height:350px"/>
+  <img src="{{ page.root }}/fig/01_granted.png" style="margin:10px;height:350px"/>
   <figcaption> Access granted! </figcaption>
 </figure><br>
 
@@ -131,8 +131,8 @@ If you're on Windows, and followed the [Setup](/setup) guide, then you will like
 If this is the first time connecting to Artemis, you will be asked to authorise it as a trusted **host** server; click 'Accept' (X-Win32) or 'Yes' (PuTTY).
 
 <figure>
-  <img src="/fig/01_xwinhosts.png" style="margin:10px;height:220px"/>
-  <img src="/fig/01_puttyhosts.png" style="margin:10px;height:220px"/>
+  <img src="{{ page.root }}/fig/01_xwinhosts.png" style="margin:10px;height:220px"/>
+  <img src="{{ page.root }}/fig/01_puttyhosts.png" style="margin:10px;height:220px"/>
   <figcaption> Unknown host challenges: X-Win32 (left), PuTTY (right) </figcaption>
 </figure><br>
 
@@ -141,8 +141,8 @@ If this is the first time connecting to Artemis, you will be asked to authorise 
 * If using 'PuTTY', a terminal window will appear and prompt you for your **username**, and then your **password**. Once entered, you should be logged on to Artemis! A command prompt on Artemis will appear in that window.
 
 <figure>
-  <img src="/fig/01_xwin.png" style="margin:10px;height:220px"/>
-  <img src="/fig/01_putty.png" style="margin:10px;height:300px"/>
+  <img src="{{ page.root }}/fig/01_xwin.png" style="margin:10px;height:220px"/>
+  <img src="{{ page.root }}/fig/01_putty.png" style="margin:10px;height:300px"/>
   <figcaption> Access granted! X-Win32 (left) trims the welcome messages, PuTTY (right) </figcaption>
 </figure><br>
 

@@ -9,7 +9,7 @@ To connect to Artemis HPC, and follow this lesson, you will need a **'terminal e
 More precisely, these commands are executed by your _shell_, which is a program designed to do just that: execute commands! The most commonly used shell is 'Bash', and we'll generally refer to the shell as a 'Bash shell', and to scripts as 'Bash scripts'. There are other shells, and each has its own set of extra commands or syntaxes it can accept -- its own _scripting languauge_.
 
 <figure>
-  <img src="/fig/s_old_term.jpeg" height="250"/>
+  <img src="{{ page.root }}/fig/s_old_term.jpeg" height="250"/>
   <figcaption> The good old days..</figcaption>
 </figure><br>
 
@@ -26,7 +26,7 @@ If you use Linux, then chances are you already know your shell and how to use it
 Mac operating systems come with a terminal program, called Terminal. Just look for it in your Applications folder, or hit Command-Space and type 'terminal'. You may find that other, 3rd party terminal programs are more user-friendly and powerful -- I use [Iterm2](https://www.iterm2.com/).
 
 <figure>
-  <img src="/fig/s_terminal_app.png" height="200">
+  <img src="{{ page.root }}/fig/s_terminal_app.png" height="200">
   <figcaption> <b>Terminal</b> is OSX's native terminal emulator.</figcaption>
 </figure><br>
 
@@ -55,8 +55,8 @@ However, those aren't going to work for us, as you'll need extra programs and ut
 Then setup as follows:
 
 1. Create a new 'Manual' connection, and select 'SSH'   
-   <img src="/fig/s_newxwin.png" style="margin:10px">   
-   <img src="/fig/s_sshxwin.png" style="margin:10px">   
+   <img src="{{ page.root }}/fig/s_newxwin.png" style="margin:10px">   
+   <img src="{{ page.root }}/fig/s_sshxwin.png" style="margin:10px">   
 
 2. Fill in the connection details:
   - Name: **eg "Artemis"**
@@ -65,7 +65,7 @@ Then setup as follows:
   - Command: ```/usr/bin/xterm -ls -fa 'consolas' -fs 11```
   - Password: **\<password\>**   
 
-   <img src="/fig/s_confxwin.png" style="margin:10px">
+   <img src="{{ page.root }}/fig/s_confxwin.png" style="margin:10px">
 3. Click 'Save'
 
 <br>
@@ -80,7 +80,7 @@ Head to [https://putty.org](https://putty.org) and download PuTTY. You can insta
   - Port: **22**
   - Connection type: **SSH**   
 
-   <img src="/fig/s_putty.png" style="margin:10px;height:400px" >
+   <img src="{{ page.root }}/fig/s_putty.png" style="margin:10px;height:400px" >
 2. Name this session **"Artemis"** and click 'Save'
 
 <br>

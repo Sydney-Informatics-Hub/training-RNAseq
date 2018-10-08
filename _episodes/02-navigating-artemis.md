@@ -23,7 +23,7 @@ This episode gets users familiar with the Artemis servers, available software an
 At the end of last lesson we logged on to Artemis, and were presented with a command prompt in a terminal window. The last line in that window would look something like this:
 
 <figure>
-  <img src="/fig/02_landing.png" style="margin:10px;height:150px"/>
+  <img src="{{ page.root }}/fig/02_landing.png" style="margin:10px;height:150px"/>
   <figcaption> Command prompt on Artemis, using X-Win32 </figcaption>
 </figure><br>
 
@@ -58,7 +58,7 @@ This is your **home** directory. Every user on Artemis (and any Linux system) ha
 <h2 data-toc-text="Artemis' 3 main directories">The three branches of the Artemis tree</h2>
 
 <figure>
-  <img src="/fig/02_arttree.png" style="margin:10px"/>
+  <img src="{{ page.root }}/fig/02_arttree.png" style="margin:10px"/>
   <figcaption> Artemis filesystem structure </figcaption>
 </figure><br>
 
@@ -132,7 +132,7 @@ then you should put and save this data in your **/scratch** space. The reasons a
 > <hr>
 > Data that you are _currently_ working with should be transferred into your **/project** folder (or **/scratch** if it is very large!), and then transferred back to it's permanent location when you're done with that part of your investigation. For more, see the [Data transfer and RDS for HPC](https://pages.github.sydney.edu.au/informatics/training.artemis.rds) course.
 >
-> <p style="text-align:center"><img src="/fig/02_data_flow.png" style="margin:10px;height:100px"/></p>
+> <p style="text-align:center"><img src="{{ page.root }}/fig/02_data_flow.png" style="margin:10px;height:100px"/></p>
 >
 {: .callout}
 
