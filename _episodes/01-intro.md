@@ -20,7 +20,7 @@ This episode introduces the [Sydney Informatics Hub](https://informatics.sydney.
 The Sydney Informatics Hub (SIH) is a _[Core Research Facility](https://sydney.edu.au/research/facilities.html)_ of the University of Sydney. Core Research Facilities centralise essential research equipment and services that would otherwise be too expensive or impractical for individual Faculties to purchase and maintain. The classic example might be the room-size electron-microscopes, built into specialised rooms in the Sydney Microscopy & Microanalysis unit.
 
 <figure>
-  <img src="/fig/01_crf.png" style="margin:10px;height:400px"/>
+  <img src="{{ page.root }}/fig/01_crf.png" style="margin:10px;height:400px"/>
   <figcaption> USyd Core Research Facilities <a href="https://sydney.edu.au/research/facilities.html">https://sydney.edu.au/research/facilities.html</a></figcaption>
 </figure><br>
 
