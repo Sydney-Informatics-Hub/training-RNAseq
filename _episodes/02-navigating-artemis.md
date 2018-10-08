@@ -116,13 +116,38 @@ So, for example, change into the project directory of the 'Training' project wit
 
 ### iii. /scratch
 
+Every project also has a **/scratch** directory, at ```/scratch/<Short_name>```. **/scratch** is where you should actually _perform_ your computations. What does this mean? If your workflow
+* Has big data inputs
+* Generates big data outputs
+* Generates lots of intermediate data files which are not needed afterward
 
+then you should put and save this data in your **/scratch** space. The reasons are that you are not limited to **1 TB** of space in **/scratch** as you are in **/project**, and there is also no reason to clutter up your shared project directories with temporary files. Once your computation is complete, simply copy the important or re-used inputs and outputs back to your **/project** folder, and delete your data in **/scratch** -- that's why it's called scratch!
 
+<br>
+> ## Your data should not be kept on Artemis!
+>
+> Wait, what? Your data, _long-term_, should _not_ be stored on Artemis, neither in **/project** nor **/scratch**. Artemis is _not_ backed-up, and has _limited space_.
+> <hr>
+> <p style="text-align:center;font-weight:bold;text-decoration:underline">Inactive data in /project is wiped after 6 months, and in /scratch after 3 months!</p>
+> <hr>
+> Data that you are _currently_ working with should be transferred into your **/project** folder (or **/scratch** if it is very large!), and then transferred back to it's permanent location when you're done with that part of your investigation. For more, see the [Data transfer and RDS for HPC](https://pages.github.sydney.edu.au/informatics/training.artemis.rds) course.
+>
+> <p style="text-align:center"><img src="/fig/02_data_flow.png" style="margin:10px;height:100px"/></p>
+>
+{: .callout}
+
+<br>
 ## Writing script files
 
 ### Text editors
 
-### i. Nano
+Artemis has a number of **text editors** available for use, and of course you could install your own. Text editors are simple-to-sophisticated programs that let you, quite simply, write text! At the most basic level, they do not have any _formatting_, like **bold** etc, but are just plain text. Some allow the composition of _'rich text'_, which does add formatting.
+
+Microsoft Word is not
+
+### i. nano
+
+### ii. gedit
 
 
 <br>   
