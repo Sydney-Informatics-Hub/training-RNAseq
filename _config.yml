@@ -11,6 +11,7 @@ carpentry: "sih"
 
 # Overall title for pages.
 title: "Introduction to Artemis HPC"
+series_name: "Artemis Series"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -28,6 +29,7 @@ repository: <USERNAME>/<PROJECT>
 email: "sih.training@sydney.edu.au"
 
 # Sites.
+series_home: "https://pages.github.sydney.edu.au/informatics/training.artemis/"
 sih_site: "http://informatics.sydney.edu.au"
 amy_site: "https://amy.software-carpentry.org/workshops"
 carpentries_github: "https://github.com/carpentries"
