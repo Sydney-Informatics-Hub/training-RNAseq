@@ -48,10 +48,6 @@ GitHub where `site.github.url` will be defined.
     <div class="container">
       {% include navbar.html %}
       <div class="row">
-        <!-- sidebar, which will move to the top on a small screen -->
-        <div class="col-md-3 col-sm-2">
-          <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
-        </div>
         <!-- main content area -->
         <div class="col-md-8 col-sm-9">
         {{ content }}
@@ -60,6 +56,10 @@ GitHub where `site.github.url` will be defined.
         {% else %}
         {% include lesson_footer.html %}
         {% endif %}
+        </div>
+        <!-- sidebar, which will move to the top on a small screen -->
+        <div class="col-md-3 col-sm-2">
+          <nav id="toc" data-spy="affix" data-toggle="toc"></nav>
         </div>
       </div>
     </div>

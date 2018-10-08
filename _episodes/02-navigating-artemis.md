@@ -122,7 +122,7 @@ So, for example, change into the project directory of the 'Training' project wit
 
 ### Text editors
 
-### 1. Nano
+### i. Nano
 
 
 <br>   
