@@ -277,6 +277,18 @@ Open gedit by executing ```gedit &```; the extra **&** tells the **shell** to op
   <figcaption> A <b>gedit</b> window, with syntax highlighting, served by XQuartz on a Mac </figcaption>
 </figure><br>
 
+<br>
+_Common operations in nano and gedit_
+
+| Operation | in _nano_ | in _gedit_ |
+| --- | --- | --- |
+| open new file | ```nano``` | ```gedit &``` |
+| open new file 'NewFile' | ```nano NewFile``` | ```gedit NewFile &``` |
+| open existing file | ```nano ExistingFile``` | ```gedit ExistingFile &``` |
+| save | <kbd>Ctrl</kbd>+<kbd>o</kbd> | <kbd>Ctrl</kbd>+<kbd>s</kbd> |
+| exit | <kbd>Ctrl</kbd>+<kbd>x</kbd> | <kbd>Ctrl</kbd>+<kbd>q</kbd> |
+
+<br>
 ### iii. others
 
 There are dozens of text editors. Some others that you may be familiar with include '**Emacs**' and '**vi/vim**'. These are available on Artemis, and 'Emacs' can be used in GUI mode as well.
@@ -291,17 +303,18 @@ _Common text editors_
 | Emacs | High (GUI), Moderate | High | Yes |
 | vi/vim | Low | High | No |
 
+
 <br>
-_Common operations in nano and gedit_
-
-| Operation | in _nano_ | in _gedit_ |
-| --- | --- | --- |
-| open new file | ```nano``` | ```gedit &``` |
-| open new file 'NewFile' | ```nano NewFile``` | ```gedit NewFile &``` |
-| open existing file | ```nano ExistingFile``` | ```gedit ExistingFile &``` |
-| save | <kbd>Ctrl</kbd>+<kbd>o</kbd> | <kbd>Ctrl</kbd>+<kbd>s</kbd> |
-| exit | <kbd>Ctrl</kbd>+<kbd>x</kbd> | <kbd>Ctrl</kbd>+<kbd>q</kbd> |
-
+> ## Windows character encoding errors
+>
+> Windows and Linux/OSX use different **character encoding**. This means that some characters (or invisibles!) that appear the same are actually _encoded_ differently -- leading to obscure errors!
+>
+> This will arise when writing code _on Windows_ machines to be used _on Linux_ ones (like Artemis).
+>
+> Common encoding issues include:
+>* _dashes_ of different lengths, eg - vs -- vs ---. This is often a problem when you _**copy and paste**_ from PDFs onto the command line.
+>* _line endings_. Some editors like '**Notepad++**' on Windows let you set which kind of line endings to encode with. Select 'Unix (LF)' if you have the option. 
+{: .callout}
 
 <br>   
 
