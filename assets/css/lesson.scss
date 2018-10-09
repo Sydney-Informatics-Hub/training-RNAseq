@@ -108,11 +108,11 @@ $codeblock-padding: 5px !default;
 
 }
 
-.callout{ @include bkSetup($color-callout, "\e146"); }
+.callout{ @include bkSetup($color-callout, "\e101"); } // 146
 .challenge{ @include bkSetup($color-challenge, "\270f"); }
 .checklist{ @include bkSetup($color-checklist, "\e067"); }
 .discussion{ @include bkSetup($color-discussion, "\e123"); }
-.keypoints{ @include bkSetup($color-keypoints, "\e101"); }
+.keypoints{ @include bkSetup($color-keypoints, "\e087"); } // 101
 .objectives{ @include bkSetup($color-objectives, "\e085"); }
 .prereq{ @include bkSetup($color-prereq, "\e124"); }
 .solution{ @include bkSetup($color-solution, "\e105"); }

@@ -99,7 +99,7 @@ exclude:
   - .Rproj.user/
 
 # Turn on built-in syntax highlighting.
-highlighter:
+highlighter: rouge
 
 # Plugins
 plugins:

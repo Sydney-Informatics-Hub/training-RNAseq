@@ -136,18 +136,171 @@ then you should put and save this data in your **/scratch** space. The reasons a
 >
 {: .callout}
 
+
+<br>
+## Software on Artemis
+
+### Existing software
+
+A [list](https://sydneyuni.atlassian.net/wiki/spaces/RC/pages/285474817/Artemis+Software+List) of programs currently installed on Artemis can be found in the [Artemis User Guide](https://sydneyuni.atlassian.net/wiki/spaces/RC/pages/185827329/Artemis+User+Guide). Software is not '_enabled_' on Artemis by default, and must be loaded before use. This is to avoid conflicts between different software and different versions of software, which may each be dependent on specific versions of other software which will also need to be loaded.
+
+This is all handled by the **modules** package. You can list **available** programs on Artemis using the ```module avail``` command
+
+~~~
+[ict_hpctrain1@login3 ~]$ module avail
+~~~
+{: .source}
+
+
+~~~
+[ict_hpctrain1@login3 ~]$ module avail
+--------------------------- /usr/local/Modules/versions ---------------------------
+3.2.10
+
+---------------------- /usr/local/Modules/3.2.10/modulefiles ----------------------
+dot         module-git  module-info modules     null        use.own
+-------------------------- /usr/local/Modules/modulefiles -------------------------
+abaqus/2016(default)    glew/2.1.0(default)     openmpi-gcc/3.0.0
+abaqus/6.14-1           glib/2.34.0(default)    openmpi-gcc/3.0.0-64
+...
+git/2.14.1(default)     openmpi-gcc/1.8.4-6.x   zlib/1.2.8(default)
+git/2.16.2              openmpi-gcc/1.8.4-backup
+gl2ps/1.4.0(default)    openmpi-gcc/2.1.2
+~~~
+{: .output}
+
+This command may take a minute to run, as there is a _lot_ of software installed! If you know roughly what the program you want is called, you can refine the search with a keyword as extra argument, eg
+
+~~~
+[ict_hpctrain1@login3 ~]$ module avail mat
+~~~
+{: .source}
+
+~~~
+-------------------------- /usr/local/Modules/modulefiles --------------------------
+matam/1.0(default)          matlab/R2013a             matlab/R2015b     matlab/R2017a     matlab/R2018a
+mathematica/11.1.1(default) matlab/R2014b(default)    matlab/R2016b     matlab/R2017b
+~~~
+{: .output}
+
+Note that multiple versions of programs may be installed, and one will be designated _(default)_ -- that is the version that will be loaded if you don't specify a version.
+
+Eg, **load** a program with the ```module load``` command and it's name
+
+~~~
+[ict_hpctrain1@login3 ~]$ module load matlab
+~~~
+{: .source}
+
+then **list** currently loaded programs with ``module list``
+
+~~~
+[ict_hpctrain1@login3 ~]$ module list
+~~~
+{: .source}
+
+~~~
+Currently Loaded Modulefiles:
+  1) matlab/R2014b
+  ~~~
+  {: .output}
+
+The version ```matlab/R2014b``` was loaded, as it is the current default. **Unload** a loaded module with ```module unload``` and its name. For more info, check out the ```module``` manual page, by executing ```man module```.
+
+<br>
+> ## Don't get burned by a version mismatch!
+>
+> Software usage, syntax and behaviour sometimes change between versions, and if you don't specify a version you may soon find that your code no longer runs or, much worse, it _does_ run, but with different results!
+>
+> For the sakes of your research, and **scientific reproducibility**, you should always _specify the version_ of the module you are loading in your scripts, and record it in your notes.  
+{: .callout}
+<br>
+
+
+### Installing new software
+
+All software on Artemis is stored in ```/user/local```. Users do not have persmissions to write to this folder, and hence cannot install new software. If you require a particular piece of software on Artemis, you can submit a request through the [ICT Self Service Portal](https://sydney.service-now.com/selfservice/ict_services.do) (_Select ICT Services > Research > High Performance Computing Request_).
+
+Alternatively, you may be able to install Linux software directly into your _userspace_, ie in your **/home** directory. Not all software can be installed in this way, and there may also be licensing issues -- so don't try this unless you know what you're doing, and please contact us if you don't!
+
+
 <br>
 ## Writing script files
 
 ### Text editors
 
-Artemis has a number of **text editors** available for use, and of course you could install your own. Text editors are simple-to-sophisticated programs that let you, quite simply, write text! At the most basic level, they do not have any _formatting_, like **bold** etc, but are just plain text. Some allow the composition of _'rich text'_, which does add formatting.
+Artemis has a number of **text editors** available for use, and of course you could install your own. Text editors are simple-to-sophisticated programs that let you, quite simply, write text! At the most basic level, they do not have any _formatting_, like **bold** etc, only 'plain' text. Many allow the composition of _'rich text'_, which does add formatting.<sup id="a3">[3](#f3)</sup> However, our purpose will be to write _scripts_ that other programs will read in and execute. These programs won't be looking at _formatting_, but will be parsing what we write according to the _syntax_ and keywords of the _programming language_ in use.
 
-Microsoft Word is not
 
-### i. nano
+To aid with this, some text editors feature _syntax highlighting_, which involves formatting text differently depending on what function that text performs in a given programming language; eg such the _MATLAB_ code below:
+
+~~~
+function hello_world()
+% A function to say hello!
+  disp('Hello, World!')
+end
+~~~
+{: .language-matlab}
+
+
+### i. nano (recommended)
+
+'**Nano**' is a basic, text-only editor with very few other features, and runs inside a _terminal window_. This makes it fast and simple to use, but it may take some getting used to for those unfamiliar with command-line programs. There is no 'point-and-click' interface to nano, only special key combinations to send commands to the program. Eg, to save a file in nano, you would hit the hotkey for 'WriteOut': <kbd>Ctrl</kbd>+<kbd>o</kbd>.
+
+To open nano, simply execute ```nano``` ar the command Prompt
+
+~~~
+[jdar4135@login2 ~]$ nano
+~~~
+{: .bash}
+
+<figure>
+  <img src="{{ page.root }}/fig/02_nano.png" style="margin:10px;height:300px"/>
+  <figcaption> The simple, text-only <b>nano</b> text editor. Note the hotkey command list at bottom </figcaption>
+</figure><br>
 
 ### ii. gedit
+
+For those who'd prefer to use a GUI (graphical user interface) with mouse support, '**gedit**' is good option, and very user friendly. It also performs syntax highlighting, which can be activated from the _View_ menu, _View > Highlight Mode_, and then select the language you would like to parse.
+
+To use 'gedit' on Artemis, you will need to have **X-Forwarding** enabled (see [Setup](/setup) guide), which means you'll need to be either on Linux, Mac, or using 'X-Win32' on Windows.
+
+Open gedit by executing ```gedit &```; the extra **&** tells the **shell** to open the process running gedit in the _background_, allowing you to continue using your terminal whilst gedit remains open.
+
+~~~
+[jdar4135@login2 ~]$ gedit &
+~~~
+{: .bash}
+
+<figure>
+  <img src="{{ page.root }}/fig/02_gedit.png" style="margin:10px;height:380px"/>
+  <figcaption> A <b>gedit</b> window, with syntax highlighting, served by XQuartz on a Mac </figcaption>
+</figure><br>
+
+### iii. others
+
+There are dozens of text editors. Some others that you may be familiar with include '**Emacs**' and '**vi/vim**'. These are available on Artemis, and 'Emacs' can be used in GUI mode as well.
+
+<br>
+_Common text editors_
+
+| Editor | Ease of use | Power/flexibility | GUI |
+| --- | --- | --- | --- |
+| **nano** | **Moderate to High** | **Low** | **No** |
+| **gedit** | **High** | **Low** | **Yes** |
+| Emacs | High (GUI), Moderate | High | Yes |
+| vi/vim | Low | High | No |
+
+<br>
+_Common operations in nano and gedit_
+
+| Operation | in _nano_ | in _gedit_ |
+| --- | --- | --- |
+| open new file | ```nano``` | ```gedit &``` |
+| open new file 'NewFile' | ```nano NewFile``` | ```gedit NewFile &``` |
+| open existing file | ```nano ExistingFile``` | ```gedit ExistingFile &``` |
+| save | <kbd>Ctrl</kbd>+<kbd>o</kbd> | <kbd>Ctrl</kbd>+<kbd>s</kbd> |
+| exit | <kbd>Ctrl</kbd>+<kbd>x</kbd> | <kbd>Ctrl</kbd>+<kbd>q</kbd> |
 
 
 <br>   
@@ -157,6 +310,8 @@ ___
 <sup id="f1">1[↩](#a1)</sup> The Research Data Store (RDS) is covered in the 2nd lesson of this series, [Introduction to the Research Data Store and Data Transfer](https://pages.github.sydney.edu.au/informatics/training.artemis.rds).
 
 <sup id="f2">2[↩](#a2)</sup> There are ways to change the user permissions of files and folders in Linux, but we won't cover that here. Don't try it unless you know what you're doing!
+
+<sup id="f3">3[↩](#a3)</sup> Programs such as Microsoft Word are not really text-editors, but more '_word processors_', in that they do a lot more than simply compose text. There is not a hard line between the two categories.
 
 ___
 <br>
