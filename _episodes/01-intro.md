@@ -4,6 +4,7 @@ teaching: 10
 exercises: 0
 questions:
 - "Who are the Sydney Informatics Hub?"
+- "What is an 'Artemis'..?"
 objectives:
 - "Learn how to connect to Artemis."
 keypoints:

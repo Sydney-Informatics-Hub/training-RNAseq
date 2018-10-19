@@ -135,7 +135,82 @@ then you should put and save this data in your **/scratch** space. The reasons a
 > <p style="text-align:center"><img src="{{ page.root }}/fig/02_data_flow.png" style="margin:10px;height:100px"/></p>
 >
 {: .callout}
+<br>
 
+#### Checking your disk usage
+
+Artemis provides a handy tool to quickly see how much disk space is currently being used by all of the projects you are a member of, and your personal **/home** directory. That tool is ```pquota```:
+
+~~~
+ict_hpctrain1@login3 ~]$ pquota
+~~~
+{: .bash}
+
+~~~
+Disk quotas for user jdar4135 (uid 572557):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+          /home  4.973G     10G     11G       -    1505       0       0       -
+Disk quotas for group RDS-CORE-SIHclassic-RW (gid 16700):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+       /project    240k      1T  1.074T       -      47       0       0       -
+Disk quotas for group RDS-CORE-CLC-RW (gid 22099):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+       /project      4k      1T  1.074T       -       1       0       0       -
+Disk quotas for group RDS-CORE-SIHsandbox-RW (gid 16198):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+       /project  233.9G      1T  1.074T       -   81018       0       0       -
+Disk quotas for group RDS-CORE-Training-RW (gid 14206):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+       /project  31.89G      1T  1.074T       -    1746       0       0       -
+Disk quotas for group RDS-CORE-ICT-RW (gid 15839):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+       /project  514.3M      1T  1.074T       -      17       0       0       -
+~~~
+{: .output}
+
+The output from ```pquota``` helpfully lists the disk quotas allowed for each of the directories I can write to, as well as the number of files I have in that filesystem. There is no limit on the number of files allowed. The usages in **/project** comprise the files of all members of that project, not just your own. **/scratch** usage is not reported.
+
+To see the disk usage of a project's **/scratch** directory (or any directory), you can use the Unix 'used disk space' command ```du```:
+
+~~~
+du -sh /scratch/Training/
+~~~
+{: .bash}
+
+~~~
+244M	/scratch/Training/
+~~~
+{: .output}
+
+Or, if you'd like know how much space _members of a project_ have used in a directory, you can query the filesystem using its built-in utility ```lfs```:
+
+~~~
+lfs quota -hg RDS-CORE-Training-RW /scratch
+~~~
+{: .bash}
+
+~~~
+Disk quotas for group RDS-CORE-Training-RW (gid 14206):
+     Filesystem    used   quota   limit   grace   files   quota   limit   grace
+       /scratch  243.5M      0k      0k       -       2       0       0       -
+~~~
+{: .output}
+
+The amount of free **/scratch** space can be reported via the 'free disk space' command ```df```:
+
+~~~
+df -h /scratch
+~~~
+{: .bash}
+
+~~~
+Filesystem            Size  Used Avail Use% Mounted on
+192.168.69.211@o2ib0:192.168.69.212@o2ib0:/Scratch
+                      379T  350T  9.3T  98% /scratch
+~~~
+{: .output}
+
+Note that in the above commands the flag ```-h``` requests 'human-readable' file sizes (in B, M, G, T, etc), and the flag ```-s``` summarised the ```du``` output into one total count, rather than a number for every sub-directory.
 
 <br>
 ## Software on Artemis
@@ -313,7 +388,7 @@ _Common text editors_
 >
 > Common encoding issues include:
 >* _dashes_ of different lengths, eg - vs -- vs ---. This is often a problem when you _**copy and paste**_ from PDFs onto the command line.
->* _line endings_. Some editors like '**Notepad++**' on Windows let you set which kind of line endings to encode with. Select 'Unix (LF)' if you have the option. 
+>* _line endings_. Some editors like '**Notepad++**' on Windows let you set which kind of line endings to encode with. Select 'Unix (LF)' if you have the option.
 {: .callout}
 
 <br>   
