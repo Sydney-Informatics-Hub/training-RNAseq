@@ -1,6 +1,6 @@
 ---
 title: "Writing PBS submission scripts"
-teaching: 10
+teaching: 30
 exercises: 0
 questions:
 - "How do we communicate with the HPC scheduler?"

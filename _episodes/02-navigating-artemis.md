@@ -1,6 +1,6 @@
 ---
 title: "Navigating Artemis"
-teaching: 10
+teaching: 25
 exercises: 0
 questions:
 - "How is Artemis HPC organised?"

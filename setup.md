@@ -1,5 +1,8 @@
 ---
+layout: page
 title: Setup
+root: .
+training_site: https://sydney-informatics-hub.github.io/training.introhpc/
 ---
 
 ## Get a shell terminal emulator

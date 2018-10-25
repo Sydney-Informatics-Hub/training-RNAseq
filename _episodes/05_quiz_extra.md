@@ -1,7 +1,7 @@
 ---
 title: "Quiz! and Addtional Notes"
-teaching: 5
-exercises: 5
+teaching: 10
+exercises: 10
 objectives:
 - "Enhance your use of Artemis HPC"
 keypoints:
@@ -106,6 +106,7 @@ An **Exit Status** of 0 generally indicates a successfully completed job. Exit s
 |Code|Meaning|
 |:--:|---|
 |3| The job was killed before it could be run |
+|137| The job was killed because it _ran out_ of **RAM** |
 |271| The job was killed because it _ran out_ of **walltime** |
 
 <br>

@@ -1,7 +1,7 @@
 ---
 title: "Submitting and monitoring Artemis Jobs"
-teaching: 10
-exercises: 0
+teaching: 35
+exercises: 5
 questions:
 - "What submission options are available?"
 - "How do I monitor the status of a job?"
