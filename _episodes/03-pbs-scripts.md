@@ -70,8 +70,8 @@ This recent tally is called your '_fair share_ weighting'. You can't really do a
 >
 > You can only access the **/project** and **/scratch** directories of _your project_.
 >
-> _Project_...!!  :smile:
-{: .callout}
+> _**Project**_!!  :smirk:
+{: .keypoints}
 
 <br>
 ### Estimating resource requests
@@ -92,7 +92,17 @@ Some good approaches are:
 > **Check the documentation** of the programs you wish to use, and look out for options or flags to enable _multi-threading_ or _multi-cpu_ operation. This is sometimes also called '_OpenMP_'.
 {: .callout}
 
-<br>
+> ## Using multiple _**chunks**_
+>
+> Not all software _can_ spread over _multiple chunks_.
+>
+> If requesting multiple chunks (with **select=n**, _n>1_), make sure your software can use them. Otherwise, they'll just be sitting idle, and you'll be waiting longer for resources you won't use to become available.
+>
+> **Check the documentation** to see if your program supports distributed computing, usually called **MPI** (Message Passing Interface). If not, requesting more than one chunk won't help!
+>
+> Note that if you _can_ use multiple chunks, the scheduler will have an easier time finding you, eg, 16 CPUs spread over _different_ chunks, than _1 chunk of 16 CPUs_. Something to keep in mind!
+{: .callout}
+
 ### Job queues
 
 The Artemis queue is broken down into sub-queues, called _**job queues**_, which each have different resources and limits allocated to them. Depending on what resources you wish to use, you will be assigned to a particular queue. In some case, you'll need to choose a special queue to use particular resources, such as GPUs. This will be discussed further in the [next Episode](04-submitting-jobs).
@@ -148,11 +158,11 @@ ls -lsh TrainingData
 [jdar4135@login3 Training]$ ls -lsh TrainingData/
 total 2.0G
 1.8G -rw-r--r-- 1 jdar4135 RDS-CORE-Training-RW 1.8G Oct 17 11:53 Automation.tar.gz
-244M -rw-r----- 1 jdar4135 RDS-CORE-Training-RW 244M Aug 24 10:59 Sample_data.tar.gz
+244M -rw-r----- 1 jdar4135 RDS-CORE-Training-RW 244M Aug 24 10:59 sample_data.tar.gz
 ~~~
 {: .output}
 
-These files are ```.tar``` archives, like ```.zip``` files you might be more familiar with. They are made and read using the ```tar``` command. We'll be using **Sample_data.tar.gz**.
+These files are ```.tar``` archives, like ```.zip``` files you might be more familiar with. They are made and read using the ```tar``` command. We'll be using **sample_data.tar.gz**.
 
 Before untar'ing it, create a working directory for yourself -- since we'll all be working on the same files, we can't all do that in **/project/Training**, as we'd either overwrite eachother's, or get '_Permission denied_' errors if we tried.
 
@@ -167,28 +177,28 @@ cd hayim
 Now untar (decompress) the data archive into your directory:
 
 ~~~
-tar -xzvf ../TrainingData/Sample_data.tar.gz
+tar -xzvf ../TrainingData/sample_data.tar.gz
 ~~~
 {: .bash}
 
 ~~~
-[jdar4135@login3 hayim]$ tar -xvzf ../TrainingData/Sample_data.tar.gz
-Sample_data/
-Sample_data/canfam3_chr5.fasta
-Sample_data/align.pbs
-Sample_data/134_R2.fastq.gz
-Sample_data/index.pbs
-Sample_data/134_R1.fastq.gz
+[jdar4135@login3 hayim]$ tar -xvzf ../TrainingData/sample_data.tar.gz
+sample_data/
+sample_data/canfam3_chr5.fasta
+sample_data/align.pbs
+sample_data/134_R2.fastq.gz
+sample_data/index.pbs
+sample_data/134_R1.fastq.gz
 ~~~
 {: .output}
 
 The option flags ```-xzvf``` mean e**x**tract files, use G**z**ip compression (for ```.tar.gz```), be **v**erbose and print what is being done, and use the archive **f**ile specified.
 
-As can be seen in the output above, the archive contains a folder 'Sample_data', and this folder has been recreated in your working directory. (Check this by running ```ls``` to list the current directory contents!). For convenience, let's move (```mv```) all the files (```*```) out of this extra folder, and remove it (```rmdir```); since I am currently in my ```hayim``` working directory, and I want the files here also, I'll use the 'here' shortcut (```./```) as my destination argument:
+As can be seen in the output above, the archive contains a folder 'sample_data', and this folder has been recreated in your working directory. (Check this by running ```ls``` to list the current directory contents!). For convenience, let's move (```mv```) all the files (```*```) out of this extra folder, and remove it (```rmdir```); since I am currently in my ```hayim``` working directory, and I want the files here also, I'll use the 'here' shortcut (```./```) as my destination argument:
 
 ~~~
-mv Sample_data/* ./
-rmdir Sample_data
+mv sample_data/* ./
+rmdir sample_data
 ~~~
 {: .bash}
 
@@ -204,7 +214,7 @@ or if you prefer to use 'GEdit': ```gedit basic.pbs &```.
 
 <figure>
   <a name="nanobasic"></a>
-  <img src="{{ page.root }}/fig/03_nanobasic.png" style="margin:10px;height:500px"/>
+  <img src="{{ page.root }}/fig/03_nanobasic2.png" style="margin:10px;height:500px"/>
   <figcaption> The <b>basic.pbs</b> PBS script. </figcaption>
 </figure><br>
 
@@ -313,7 +323,7 @@ In the example above, the program ```bwa``` has a sub-function ```index```. To t
 
 In general, program options will be specified by a **flag** followed by its desired **value**, though some options that don't have multiple values will just be invoked by their **flag**. Options also often have _long_ and _short_ names; eg to specify an output file you may be able to write either ```--output=filename.ext``` or simply ```-o filename.ext```.
 
-The full range of functions, options and usages that a program offers can be found by invoking its ```--help``` option
+The full range of functions, options and usages that a program offers can be found by invoking its ```--help``` option (assuming you've loaded the program with **Modules** first)
 
 ~~~
 bwa --help
