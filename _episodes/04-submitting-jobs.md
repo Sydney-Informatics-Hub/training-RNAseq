@@ -83,8 +83,9 @@ We need to make a few edits before we can submit this script. Can you guess what
 > Give your job a **name**
 >
 > Use the ```-N``` PBS directive to give your job an easily identifiable name. You might run **lots** of jobs at the same time, so you want to be able to keep track of them!
+>
 > ~~~
-> #PBS -N Index_hayim
+> #PBS -N Basic_hayim
 > ~~~
 > {: .bash}
 > Substitute a job name of your choice!
