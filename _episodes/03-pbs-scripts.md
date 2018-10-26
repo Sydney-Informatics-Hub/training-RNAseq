@@ -1,7 +1,7 @@
 ---
 title: "Writing PBS submission scripts"
 teaching: 30
-exercises: 0
+exercises: 10
 questions:
 - "How do we communicate with the HPC scheduler?"
 objectives:
@@ -105,7 +105,7 @@ Some good approaches are:
 
 ### Job queues
 
-The Artemis queue is broken down into sub-queues, called _**job queues**_, which each have different resources and limits allocated to them. Depending on what resources you wish to use, you will be assigned to a particular queue. In some case, you'll need to choose a special queue to use particular resources, such as GPUs. This will be discussed further in the [next Episode](04-submitting-jobs).
+The Artemis queue is broken down into sub-queues, called _**job queues**_, which each have different resources and limits allocated to them. Depending on what resources you wish to use, you will be assigned to a particular queue. In some case, you'll need to choose a special queue to use particular resources, such as GPUs. This will be discussed further in the [next Episode]({{ page.root }}/04-submitting-jobs).
 
 <br>
 ### Scheduler 'PBS' directives
@@ -326,7 +326,7 @@ In general, program options will be specified by a **flag** followed by its desi
 The full range of functions, options and usages that a program offers can be found by invoking its ```--help``` option (assuming you've loaded the program with **Modules** first)
 
 ~~~
-bwa --help
+samtools --help
 ~~~
 {: .bash}
 
@@ -388,7 +388,7 @@ ___
 **Notes**   
 <sup id="f1">1[↩](#a1)</sup> To get access to **Artemis HPC** you must have a valid Unikey and be a member of an RDMP (Research Data Management Plan) with Artemis access. RDMPs are managed in the **[DashR](https://dashr.sydney.edu.au)** _Researcher Dashboard_ portal.
 
-<sup id="f2">2[↩](#a2)</sup> Your _fair share_ count decays with a half life of 2 weeks. The contribution of resource usage to your _fair share_ count depends on the queue your job runs in. More on this in [Episode 4](04-submitting-jobs).
+<sup id="f2">2[↩](#a2)</sup> Your _fair share_ count decays with a half life of 2 weeks. The contribution of resource usage to your _fair share_ count depends on the queue your job runs in. More on this in [Episode 4]({{ page.root }}/04-submitting-jobs).
 
 <sup id="f3">3[↩](#a3)</sup> A _shell_ is a user interface for communicating with the operating system, ie the computer's main software layer. Shells can be 'command-line' (CLI) or graphical (GUI). It's called a 'shell' because it sits around the operating system's 'kernel', which contains the core programming that actually drives the hardware.
 

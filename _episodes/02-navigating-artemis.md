@@ -1,6 +1,6 @@
 ---
 title: "Navigating Artemis"
-teaching: 25
+teaching: 20
 exercises: 0
 questions:
 - "How is Artemis HPC organised?"
@@ -338,7 +338,7 @@ To open nano, simply execute ```nano``` ar the command Prompt
 
 For those who'd prefer to use a GUI (graphical user interface) with mouse support, '**gedit**' is good option, and very user friendly. It also performs syntax highlighting, which can be activated from the _View_ menu, _View > Highlight Mode_, and then select the language you would like to parse.
 
-To use 'gedit' on Artemis, you will need to have **X-Forwarding** enabled (see [Setup](/setup) guide), which means you'll need to be either on Linux, Mac, or using 'X-Win32' on Windows.
+To use 'gedit' on Artemis, you will need to have **X-Forwarding** enabled (see [Setup]({{ page.root }}/setup) guide), which means you'll need to be either on Linux, Mac, or using 'X-Win32' on Windows.
 
 Open gedit by executing ```gedit &```; the extra **&** tells the **shell** to open the process running gedit in the _background_, allowing you to continue using your terminal whilst gedit remains open.
 

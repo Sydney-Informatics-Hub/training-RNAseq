@@ -1,7 +1,7 @@
 ---
 title: "Submitting and monitoring Artemis Jobs"
 teaching: 35
-exercises: 5
+exercises: 15
 questions:
 - "What submission options are available?"
 - "How do I monitor the status of a job?"
@@ -40,7 +40,7 @@ There are also a number of additional queues which are not part of **defaultQ**.
 | Queue | Purpose |
 |:---:|:---|
 | small-express | For quick jobs that require few resources. |
-| scavenger | Allows jobs to use any idle resources available in other people's _allocations_; however, **your job will be suspended if the allocation owner requests those resoures!**<br>Suspended scavenger jobs will be **killed** after 24 hours. |
+| scavenger | Allows jobs to use any idle resources available in other people's _allocations_; however, **your job will be suspended if the allocation owner requests those resources!**<br>Suspended scavenger jobs will be **killed** after 24 hours. |
 | dtq | This queue is reserved for transferring data into or out of Artemis. Users may **not** try to perform computation in these queues, and the system generally won't let you. |
 | interactive | This is the queue for _interactive_ jobs. It can only be accessed via a ```qsub -I``` command. |
 
@@ -137,7 +137,7 @@ perl hello.pl <YourName>
 ~~~
 {: .bash}
 
-PBS uses your **/home/<unikey>** directory as your default _working directory_ in which to start all PBS scripts. Since your data is not likely to ever be in your home directory, the first command in any script will probably involve setting or changing to the correct folder.
+PBS uses your **/home/\<unikey\>** directory as your default _working directory_ in which to start all PBS scripts. Since your data is not likely to ever be in your home directory, the first command in any script will probably involve setting or changing to the correct folder.
 
 The rest of these commands (i) create a new folder, (ii) make a copy of the **basic.pbs** file, and (iii) run a '_Perl_' script using the ```perl``` programming language and interpreter. The script **hello.pl** accepts one argument.
 
@@ -186,7 +186,7 @@ qstat -x 2557008
 [jdar4135@login3 hayim]$ qstat -x 2557008
 Job id            Name             User              Time Use S Queue
 ----------------  ---------------- ----------------  -------- - -----
-2557008.pbsserver Index_hayim      jdar4135                 0 Q small
+2557008.pbsserver Basic_hayim      jdar4135                 0 Q small
 ~~~
 {: .output}
 
@@ -214,7 +214,7 @@ Artemis provides another tool for checking your jobs, which also shows some extr
 Job Summary for user jdar4135
                                                 Requested -------------------------             Elapsed  --------------------------
 Job ID---- Queue- Job Name--- Project--- State- Chunks Cores GPU       RAM Walltime  Start Time CPU Hours   CPU% Progress End Time
-2557008    small  Index_hayim Training   Queued      1     1   -     1.0Gb       1m  (n/a)          (n/a)      -        - (n/a)
+2557008    small  Basic_hayim Training   Queued      1     1   -     1.0Gb       1m  (n/a)          (n/a)      -        - (n/a)
  * Times with an asterix are estimates only
  * End time is start time + walltime so job may finish earlier
  * Progress is accumulated walltime vs specified walltime - so see above
@@ -249,7 +249,7 @@ qstat -x 2556851
 [jdar4135@login3 hayim]$ qstat -x 2557008
 Job id            Name             User              Time Use S Queue
 ----------------  ---------------- ----------------  -------- - -----
-2557008.pbsserver Index_hayim      jdar4135          00:00:00 F small
+2557008.pbsserver Basic_hayim      jdar4135          00:00:00 F small
 ~~~
 {: .output}
 
@@ -272,9 +272,9 @@ total 271M
 -rw-r----- 1 jdar4135 RDS-CORE-Training-RW  748 Oct 25 11:48 align.pbs
 -rw-r----- 1 jdar4135 RDS-CORE-Training-RW  203 Oct 25 14:34 basic.pbs
 -rw-r----- 1 jdar4135 RDS-CORE-Training-RW  39M Nov 30  2016 canfam3_chr5.fasta
--rw------- 1 jdar4135 RDS-CORE-Training-RW    0 Oct 25 15:35 Index_hayim.e2557008
--rw------- 1 jdar4135 RDS-CORE-Training-RW   31 Oct 25 15:35 Index_hayim.o2557008
--rw-r--r-- 1 jdar4135 RDS-CORE-Training-RW 1.3K Oct 25 15:35 Index_hayim.o2557008_usage
+-rw------- 1 jdar4135 RDS-CORE-Training-RW    0 Oct 25 15:35 Basic_hayim.e2557008
+-rw------- 1 jdar4135 RDS-CORE-Training-RW   31 Oct 25 15:35 Basic_hayim.o2557008
+-rw-r--r-- 1 jdar4135 RDS-CORE-Training-RW 1.3K Oct 25 15:35 Basic_hayim.o2557008_usage
 -rw-r----- 1 jdar4135 RDS-CORE-Training-RW  376 Aug 24 10:52 index.pbs
 drwxr-sr-x 2 jdar4135 RDS-CORE-Training-RW 4.0K Oct 25 15:16 New_job
 ~~~
@@ -767,6 +767,8 @@ Neat, hey?
 
 ___
 **Notes**
-<sup id="f1">[↩]1(#a1)</sup>The ```\``` backslash in this block allow the code to be broken over multiple lines, allowing for neater code that doesn't train off the screen. There must be a space before the backslashes.
+
+<sup id="f1">1[↩](#a1)</sup> The ```\``` backslash in this block allow the code to be broken over multiple lines, allowing for neater code that doesn't train off the screen. There must be a space before the backslashes.
+
 ___
 <br>

@@ -2,6 +2,8 @@
 title: "Quiz! and Addtional Notes"
 teaching: 10
 exercises: 10
+questions:
+- "Let's see how much we've learned!"
 objectives:
 - "Enhance your use of Artemis HPC"
 keypoints:

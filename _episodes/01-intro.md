@@ -1,6 +1,6 @@
 ---
 title: "Welcome to Artemis HPC"
-teaching: 15
+teaching: 20
 exercises: 0
 questions:
 - "Who are the Sydney Informatics Hub?"
@@ -66,18 +66,18 @@ Finally, if you do use Artemis for your research, please acknowledge us! This en
 
 # Connecting to Artemis
 
-Connections to Artemis are **remote connections** -- you'll never sit at one of Artemis' machines, which are stored in a secure data-centre in Western Sydney. Instead, you connect remotely into one of Artemis' **login nodes**. Login nodes are Artemis machines that don't perform any actual computing jobs, but simply provide users with an access gateway to Artemis' filesystems and the PBS Pro **job sheduler**.
+Connections to Artemis are **remote connections** -- you'll never sit at one of Artemis' machines, which are stored in a secure data-centre in Western Sydney. Instead, you connect remotely into one of Artemis' **login nodes**. Login nodes are Artemis machines that don't perform any actual computing jobs, but simply provide users with an access gateway to Artemis' filesystems and the PBS Pro **job scheduler**.
 
 You can thus connect to Artemis from _anywhere_, requiring only a **terminal emulator** with an **SSH client**. (If you're not on the USyd network (ie off-campus), you'll also need to connect to the University's **[VPN](http://staff.ask.sydney.edu.au/app/answers/detail/a_id/519/kw/vpn)**, or use Artemis' intermediate **_Jump server_**).
 
-If you followed the [Setup](/setup) instructions, then you should already have the required software installed. If not, _please go do this now_!
+If you followed the [Setup]({{ page.root }}/setup) instructions, then you should already have the required software installed. If not, _please go do this now_!
 
 
 <h2 data-toc-text="via SSH command line"> Connecting via SSH in a terminal (recommended)</h2>
 
 Depending on your computer's operating system, there may be several ways to connect to Artemis. The simplest way is to open your **terminal emulator** application, and 'ssh' into the Artemis login-servers. This is our recommended method, as to use Artemis effectively you should get comfortable working on the **command line**.
 
-Linux and Mac both have native terminal apps, so you only need to open them. You may also have installed one on your Windows machine.<sup id="a1">[1](#f1)</sup> Go ahead and do that now. The last line displayed in your terminal window should have some information about your computer's name, and you user name, follwed by a **$** symbol. This is the **command prompt** -- you type your commands after the '$'.
+Linux and Mac both have native terminal apps, so you only need to open them. You may also have installed one on your Windows machine.<sup id="a1">[1](#f1)</sup> Go ahead and do that now. The last line displayed in your terminal window should have some information about your computer's name, and you user name, followed by a **$** symbol. This is the **command prompt** -- you type your commands after the '$'.
 
 <figure>
   <img src="{{ page.root }}/fig/01_bash.png" style="margin:10px;height:400px"/>
@@ -124,7 +124,7 @@ Enter 'yes'. You will then be asked for your password; type it and press 'enter'
 
 <h2 data-toc-text="via SSH GUI apps"> Connecting via an SSH GUI (common for Windows users) </h2>
 
-If you're on Windows, and followed the [Setup](/setup) guide, then you will likely be connecting through an X-window or shell client program, like 'X-Win32' or 'PuTTY'. Following the instructions in the [Setup](/setup) guide
+If you're on Windows, and followed the [Setup]({{ page.root }}/setup) guide, then you will likely be connecting through an X-window or shell client program, like 'X-Win32' or 'PuTTY'. Following the instructions in the [Setup]({{ page.root }}/setup) guide
 * Open your installed program
 * Select the "Artemis" session you configured earlier
 * Click 'Launch' (X-Win32) or 'Open' (PuTTY)
@@ -150,7 +150,7 @@ If this is the first time connecting to Artemis, you will be asked to authorise 
 
 <h2 data-toc-text="via graphical login nodes"> Connecting via an the Graphical Login Nodes (advanced users)</h2>
 
-For some users, it is occasionally necessary to have more reliable graphical access to the Artemis **login nodes**, in order to check intermediate results when using software with graphical outputs. Setup instructions are provided on the [Setup](/setup) page.
+For some users, it is occasionally necessary to have more reliable graphical access to the Artemis **login nodes**, in order to check intermediate results when using software with graphical outputs. Setup instructions are provided on the [Setup]({{ page.root }}/setup) page.
 
 
 <br>   
