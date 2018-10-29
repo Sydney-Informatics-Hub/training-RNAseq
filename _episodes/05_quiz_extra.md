@@ -19,10 +19,8 @@ Read through **all the questions** on the first slide **_BEFORE CLICKING_** to a
 Better yet, _wait for the instructor_ and we'll go through the quiz all together. :blush:
 
 <br>
-<iframe src="https://unisyd-my.sharepoint.com/personal/hayim_dar_sydney_edu_au/_layouts/15/ESMUb4t3T8xNtvUT01KmkkcB1ER1VNimkf7aOl6mq4asQg?e=TcL1W2=embedview&amp;wdAr=1.7777777777777777" width="730px" height="570px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe>
+<iframe src="https://unisyd-my.sharepoint.com/:p:/g/personal/hayim_dar_sydney_edu_au/ESMUb4t3T8xNtvUT01KmkkcB1ER1VNimkf7aOl6mq4asQg?e=prI08i&amp;action=embedview&amp;wdAr=1.7777777777777777" width="730px" height="570px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office Online</a>.</iframe>
 <br>
-
-https://unisyd-my.sharepoint.com/:p:/g/personal/hayim_dar_sydney_edu_au/ESMUb4t3T8xNtvUT01KmkkcB1ER1VNimkf7aOl6mq4asQg?e=TcL1W2
 
 ## Additional notes
 
