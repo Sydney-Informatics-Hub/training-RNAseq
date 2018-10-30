@@ -48,7 +48,7 @@ and to meet some of our community members.
 
 1.  If you wish to change this lesson,
     please work in <https://github.sydney.edu.au/informatics/training.artemis/>,
-    which can be viewed at <https://pages.github.sydney.edu.au/informatics/training.artemis/>.
+    which can be viewed at <https://sydney-informatics-hub.github.io/training.artemis/>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,
@@ -134,7 +134,7 @@ You can also [reach them by email][email].
 [sih-email]: mailto:sih.training@sydney.edu.au
 [sih-site]: https://informatics.sydney.edu.au
 [sih-training]: https://informatics.sydney.edu.au/training
-[sih-lessons]: https://pages.github.sydney.edu.au/informatics/training.io/
+[sih-lessons]: https://sydney-informatics-hub.github.io/training.io/
 [issues]: https://github.sydney.edu.au/informatics/training.artemis/issues/
 [usyd-github]: https://github.sydney.edu.au
 [usyd-github-join]: https://github.sydney.edu.au/join

@@ -116,7 +116,7 @@ An **Exit Status** of 0 generally indicates a successfully completed job. Exit s
 
 Artemis is **not** intended to be used as a data store. Artemis is not backed up, and has limited space. Any data you have finished working with should be transferred to your **_RCOS_** space.
 
-How to do this is covered in the next course, [‘_Data transfer and RDS for HPC_’](https://pages.github.sydney.edu.au/informatics/training.artemis.rds)!
+How to do this is covered in the next course, [‘_Data transfer and RDS for HPC_’](https://sydney-informatics-hub.github.io/training.artemis.rds)!
 
 <figure>
   <img src="{{ page.root }}/fig/05_backup.png" style="margin:10px;height:300px"/>

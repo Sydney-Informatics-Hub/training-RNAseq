@@ -29,7 +29,7 @@ repository: <USERNAME>/<PROJECT>
 email: "sih.training@sydney.edu.au"
 
 # Sites.
-series_home: "https://pages.github.sydney.edu.au/informatics/training.artemis/"
+series_home: "https://sydney-informatics-hub.github.io/training.artemis/"
 sih_site: "http://informatics.sydney.edu.au"
 amy_site: "https://amy.software-carpentry.org/workshops"
 carpentries_github: "https://github.com/carpentries"

@@ -130,7 +130,7 @@ then you should put and save this data in your **/scratch** space. The reasons a
 > <hr>
 > <p style="text-align:center;font-weight:bold;text-decoration:underline">Inactive data in /project is wiped after 6 months, and in /scratch after 3 months!</p>
 > <hr>
-> Data that you are _currently_ working with should be transferred into your **/project** folder (or **/scratch** if it is very large!), and then transferred back to it's permanent location when you're done with that part of your investigation. For more, see the [Data transfer and RDS for HPC](https://pages.github.sydney.edu.au/informatics/training.artemis.rds) course.
+> Data that you are _currently_ working with should be transferred into your **/project** folder (or **/scratch** if it is very large!), and then transferred back to it's permanent location when you're done with that part of your investigation. For more, see the [Data transfer and RDS for HPC](https://sydney-informatics-hub.github.io/training.artemis.rds) course.
 >
 > <p style="text-align:center"><img src="{{ page.root }}/fig/02_data_flow.png" style="margin:10px;height:100px"/></p>
 >
@@ -395,7 +395,7 @@ _Common text editors_
 
 ___
 **Notes**   
-<sup id="f1">1[↩](#a1)</sup> The Research Data Store (RDS) is covered in the 2nd lesson of this series, [Introduction to the Research Data Store and Data Transfer](https://pages.github.sydney.edu.au/informatics/training.artemis.rds).
+<sup id="f1">1[↩](#a1)</sup> The Research Data Store (RDS) is covered in the 2nd lesson of this series, [Introduction to the Research Data Store and Data Transfer](https://sydney-informatics-hub.github.io/training.artemis.rds).
 
 <sup id="f2">2[↩](#a2)</sup> There are ways to change the user permissions of files and folders in Linux, but we won't cover that here. Don't try it unless you know what you're doing!
 
