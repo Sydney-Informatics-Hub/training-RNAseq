@@ -29,8 +29,9 @@ repository: <USERNAME>/<PROJECT>
 email: "sih.training@sydney.edu.au"
 
 # Sites.
-series_home: "https://sydney-informatics-hub.github.io/training.artemis/"
 sih_site: "http://informatics.sydney.edu.au"
+sih_pages: "https://sydney-informatics-hub.github.io"
+series_home: "https://sydney-informatics-hub.github.io/training.artemis/"
 amy_site: "https://amy.software-carpentry.org/workshops"
 carpentries_github: "https://github.com/carpentries"
 carpentries_pages: "https://carpentries.github.io"
