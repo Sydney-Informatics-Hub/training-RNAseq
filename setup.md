@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Setup
-root: .
-training_site: {{ site.sih_pages }}/training.introhpc/
+root: "."
+training_site: "{{ site.sih_pages }}/training.introhpc/"
 ---
 
 ## Get a shell terminal emulator
