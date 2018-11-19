@@ -1,5 +1,5 @@
 ---
-title: "Quiz! and Addtional Notes"
+title: "Quiz! and Additional Notes"
 teaching: 10
 exercises: 10
 questions:
