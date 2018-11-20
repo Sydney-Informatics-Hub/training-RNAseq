@@ -29,7 +29,7 @@ If you use Linux, then chances are you already know your shell and how to use it
 Mac operating systems come with a terminal program, called Terminal. Just look for it in your Applications folder, or hit Command-Space and type 'terminal'. You may find that other, 3rd party terminal programs are more user-friendly and powerful -- I use [Iterm2](https://www.iterm2.com/).
 
 <figure>
-  <img src="{{ page.root }}/fig/s_terminal_app.png" height="200">
+  <img src="{{ page.root }}/fig/s_terminal_app.png" width="500">
   <figcaption> <b>Terminal</b> is OSX's native terminal emulator.</figcaption>
 </figure><br>
 
