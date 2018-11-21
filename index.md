@@ -8,7 +8,7 @@ permalink: index.html  # Is the only page that don't follow the partner /:path/i
 
 **Target audience:** Students and staff who would like to learn how to run compute jobs on Artemis HPC. Participants must have a valid USyd unikey.
 
-**Follow-on courses:** This course is **part one** of the **[Artemis HPC Training Series]({{ site.sih_pages }}/{{ site.github.repository_name }}/)**.
+**Follow-on courses:** This course is **part one** of the **[Artemis HPC Training Series]({{ site.series_home }})**.
 
 This first lesson is intended as part one of a pair, with ‘_Introduction to the Artemis HPC_’ in the morning and [‘_Data transfer and RDS for HPC_’]({{ site.sih_pages }}/training.artemis.rds) in the afternoon. It is recommended to register for both, however you may choose to take these courses on separate days as suits your needs.
 
