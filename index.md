@@ -24,6 +24,6 @@ The final lesson, ['_Matlab on Artemis: The MDCS_']({{ site.sih_pages }}/trainin
 > **OWN LAPTOP REQUIRED**.
 {: .prereq}
 
-
+{{ site.github }}
 
 {% include links.md %}
