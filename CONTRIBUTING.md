@@ -27,13 +27,13 @@ or a factual error.
 This is a good way to introduce yourself
 and to meet some of our community members.
 
-1.  If you do not have a [University of Sydney GitHub][usyd-github] account,
+1.  If you do not have a [GitHub][github] account,
     you can [send us comments by email][email].
     However,
     we will be able to respond more quickly if you use one of the other methods described below.
 
-2.  If you have a [University of Sydney GitHub][usyd-github] account,
-    or are willing to [create one][usyd-github-join],
+2.  If you have a [GitHub][usyd-github] account,
+    or are willing to [create one][github-join],
     but do not know how to use Git,
     you can report problems or suggest improvements by [creating an issue][issues].
     This allows us to assign the item to someone
@@ -47,8 +47,8 @@ and to meet some of our community members.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.sydney.edu.au/informatics/training.artemis/>,
-    which can be viewed at <{{ site.sih_pages }}/training.artemis/>.
+    please work in <{{ site.sih_github }}/{{ site.github.repository_name }}/>,
+    which can be viewed at <{{ site.sih_pages }}/{{ site.github.repository_name }}/>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,
@@ -134,8 +134,8 @@ You can also [reach them by email][email].
 [sih-email]: mailto:sih.training@sydney.edu.au
 [sih-site]: https://informatics.sydney.edu.au
 [sih-training]: https://informatics.sydney.edu.au/training
-[sih-lessons]: {{ site.sih_pages }}/training.io/
-[issues]: https://github.sydney.edu.au/informatics/training.artemis/issues/
+[sih-lessons]: {{ site.sih_pages }}/training.home/
+[issues]: {{ site.sih_github }}/{{ site.github.repository_name }}/issues/
 [usyd-github]: https://github.sydney.edu.au
 [usyd-github-join]: https://github.sydney.edu.au/join
 

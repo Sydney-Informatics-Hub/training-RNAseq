@@ -7,6 +7,7 @@ JEKYLL=jekyll
 JEKYLL_VERSION=3.7.3
 PARSER=bin/markdown_ast.rb
 DST=_site
+JGH_TOKEN=c7026ef9ceff483b267df4cac2cc454abf55870c
 
 # Controls
 .PHONY : commands clean files
@@ -23,7 +24,7 @@ docker-serve :
 
 ## serve            : run a local server.
 serve : lesson-md
-	${JEKYLL} serve
+	JEKYLL_GITHUB_TOKEN=${JGH_TOKEN} ${JEKYLL} serve
 
 ## site             : build files but do not run a server.
 site : lesson-md
