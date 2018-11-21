@@ -6,7 +6,7 @@ title: About
 <br>
 **[The Sydney Informatics Hub (SIH)]({{ site.sih_site }})** is a [Core Research Facility](https://sydney.edu.au/research/facilities.html) of the University of Sydney. SIH provides support, training, and expertise on research data, analyses and computing for research staff, students and affiliates of the University. We deliver policies, systems, advice, engineering and training to research staff, students and affiliates of the University.
 
-Researchers can access SIH's services by completing an [assistance form](https://goo.gl/9VkMXN), attending [training courses]({{ site.sih_site }}/training/) or contacting [sih.info@sydney.edu.au](mailto:sih.info@sydney.edu.au) for more information.
+Researchers can access SIH's services by completing an [assistance form]({{ site.sih_site }}/help), attending [training courses]({{ site.sih_site }}/training/) or contacting [sih.info@sydney.edu.au](mailto:sih.info@sydney.edu.au) for more information.
 
 ### Our Services
 

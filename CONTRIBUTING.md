@@ -1,4 +1,9 @@
-# Contributing
+---
+layout: page
+title: "Contributing"
+---
+
+## Contributing
 
 The [Sydney Informatics Hub][sih-site] welcomes your comments, fixes and suggestions to improve our training courses!
 Using the platform and templates developed by [The Carpentries][carpentries-site], you can easily fork out GitHub repos and make edits.
@@ -10,7 +15,7 @@ fixes to existing material,
 bug reports,
 and reviews of proposed changes are all welcome.
 
-## Contributor Agreement
+### Contributor Agreement
 
 By contributing,
 you agree that we may redistribute your work under [our license](LICENSE.md).
@@ -19,6 +24,8 @@ we will address your issues and/or assess your change proposal as promptly as we
 and help you become a member of our community.
 
 ## How to Contribute
+
+### File an issue
 
 The easiest way to get started is to file an issue
 to tell us about a spelling mistake,
@@ -44,11 +51,11 @@ and to meet some of our community members.
     you can submit a pull request (PR).
     Instructions for doing this are [included below](#using-github).
 
-## Where to Contribute
+### Suggest edits
 
 1.  If you wish to change this lesson,
-    please work in <{{ site.sih_github }}/{{ site.github.repository_name }}/>,
-    which can be viewed at <{{ site.sih_pages }}/{{ site.github.repository_name }}/>.
+    please work in <{{ site.sih_github }}/{{ site.github.repository_name }}>,
+    which can be viewed at <{{ site.sih_pages }}/{{ site.github.repository_name }}>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,
@@ -65,7 +72,7 @@ and to meet some of our community members.
     or HTML boilerplate for lessons or workshops stored in `_includes` or `_layouts`,
     please work in <https://github.com/carpentries/styles>.
 
-## What to Contribute
+### What to Contribute
 
 There are many ways to contribute,
 from writing new exercises and improving existing ones
@@ -80,7 +87,7 @@ it's easy for people who have been using these lessons for a while
 to forget how impenetrable some of this material can be,
 so fresh eyes are always welcome.
 
-## What *Not* to Contribute
+### What *Not* to Contribute
 
 Our lessons already contain more material than we can cover in a typical workshop,
 so we are usually *not* looking for more concepts or tools to add to them.
@@ -138,6 +145,8 @@ You can also [reach them by email][email].
 [issues]: {{ site.sih_github }}/{{ site.github.repository_name }}/issues/
 [usyd-github]: https://github.sydney.edu.au
 [usyd-github-join]: https://github.sydney.edu.au/join
+[this-repo]: {{ site.sih_github }}/{{ site.github.repository_name }}
+[this-ghpage]: {{ site.sih_pages }}/{{ site.github.repository_name }}
 
 [carpentries-site]: https://carpentries.org/
 [email]: mailto:sih.training@sydney.edu.au
