@@ -1,8 +1,8 @@
 # Artemis Training Course Template
 
-## How to use
+## 1 Getting this template
 
-### 1. Clone the **training.template** repo
+### i. Clone the **training.template** repo
 
 The first step is to make a copy of the **training.template** repository, which you will then edit to create your training course.
 
@@ -28,7 +28,7 @@ git pull template gh-pages
 
 You will now have a skeleton of the course website, ready for editing. The template repo will be available as a remote repository, should you wish to update the template files later on.
 
-### 2. Create a course repo on Sydney-Informatics-Hub
+### i. Create a course repo on Sydney-Informatics-Hub
 
 Go to the Sydney Informatics Hub [external git site](https://github.com/Sydney-Informatics-Hub) (this site!), and create a new repository
 
@@ -36,7 +36,7 @@ Go to the Sydney Informatics Hub [external git site](https://github.com/Sydney-I
 <img src="fig/R01.png" height="200">
 </p>
 
-Make sure **Sydney-Informatics-Hub** and not your personal account is the owner. Name the repo whatever you wish, but I suggest keeping to a convention following **training.<series>.<course>**, eg **training.artemis.introhpc**.
+Make sure **Sydney-Informatics-Hub** and not your personal account is the owner. Name the repo whatever you wish, but I suggest keeping to a convention following **training.\<series\>.\<course\>**, eg *training.artemis.introhpc*.
 
 <p align="center">
 <img src="fig/R02.png" height="500">
@@ -55,11 +55,75 @@ git remote add origin https://github.com/Sydney-Informatics-Hub/training.<series
 git push -u origin master
 ```
 
-Finally, add the **Training** Team to the repo, so that all members will be able to edit it. Go to the **Settings** tab at top right, and select _Collaborators & teams_ from the nav menu on the left:
+Finally, add the **Training** Team to the repo, so that all members will be able to edit it. Go to the **Settings** tab at top right of the repo page on GitHub.com, and select _Collaborators & teams_ from the nav menu on the left. Then select _Add a team_:
 
 <p align="center">
 <img src="fig/R05.png" height="300">
 </p>
+
+### 3. Checking your work
+
+The [SWC template][lesson-example] this is based off of includes some scripts to check your lessons. Running ```make lesson-check``` in your local repo directory will check for formatting and setup issues.
+
+### (4. Updating the template)
+
+This **template** may be updated from time to time. If you ever wish or need to incorporate such updates into your customised course websites, you do so by _pulling_ in the changes from the **template** repo into your **course** repo.
+
+You will need to pay careful attention to the merge process to ensure that none of your content is overwritten by the update. You will probably want to have a graphical Git-enabled editor or _diff_ tool to let you easily see and approve/reject any merge conflicts. 
+
+If you **created your course repo from the template originally**, as in these instructions, then the changes you have made should take precedence, and there should be few problems. However, new _content_ may be added to the template -- such additions will always include the phrase **"FIXME"**, so make sure to search for these in your repo. (Running ```make lesson-fixme``` in your repo directory will find any remaining "FIXME"s in your files).
+
+At your local copy
+
+```
+```
+
+## 2. Writing a course
+
+### i. Editing the template
+
+First, familiarise yourself with the [Contribution Guide](CONTRIBUTING.md) and have a look at The Carpentries' [lesson example and guidelines][lesson-example] on Carpentries-style lesson formatting.
+
+Before you being to edit content, there are a number of **settings** you need to change first:
+
+
+### ii. Setting up Jekyll to render your lesson website locally
+
+You will want to set up Jekyll so that you can preview changes on your own machine before pushing them to GitHub. To do this you must install the software described below. (Julian Thilo's instructions for [installing Jekyll on Windows][jekyll-windows].)
+
+1.  **Ruby**.
+    This is included with Linux and macOS;
+    the simplest option on Windows is to use [RubyInstaller][ruby-installer].
+    Make sure Ruby is upto date otherwise jekyll may fail.
+    You can test your installation by running `ruby --version`.
+    For more information,
+    see [the Ruby installation guidelines][ruby-install-guide].
+
+2.  **[RubyGems][rubygems]**
+    (the package manager for Ruby).
+    You can test your installation by running `gem --version`.
+
+3.  **[Jekyll][jekyll]**.
+    You can install this by running `gem install jekyll`.
+    On macOS, a user does not have a permission to write to `/Library/Ruby/Gems/`.
+    Run `gem install jekyll --user-install` instead.
+
+4.  **R Packages**.
+    We use [knitr][cran-knitr], [stringr][cran-stringr], and [checkpoint][cran-checkpoint]
+    to format lessons written in R Markdown,
+    so you will need to install these to build R lessons
+    (and this example lesson). The best way to install these packages is to open an R terminal and type:
+
+    ```
+    > install.packages('knitr', repos = 'https://', dependencies = TRUE)
+    > install.packages('stringr', repos = 'https://cran.rstudio.com', dependencies = TRUE)
+    > install.packages('checkpoint', repos = 'https://cran.rstudio.com', dependencies = TRUE)
+    > install.packages('ggplot2', repos = 'https://cran.rstudio.com', dependencies = TRUE)
+    ```
+
+If you want to run `bin/lesson_check.py` (which is invoked by `make lesson-check`)
+you will need Jekyll (so that you have its Markdown parser, which is called Kramdown)
+and the [PyYAML][pyyaml] module for Python 3.
 
 ## Contributing
 
@@ -80,3 +144,33 @@ Contact [sih.training@sydney.edu.au](mailto:sih.training@sydney.edu.au).
 
 
 [lesson-example]: https://carpentries.github.io/lesson-example
+[cc-by-human]: https://creativecommons.org/licenses/by/4.0/
+[cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
+[osi]: https://opensource.org
+[mit-license]: https://opensource.org/licenses/mit-license.html
+
+[coc]: https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html
+[contrib-covenant]: https://contributor-covenant.org/
+[contributing]: blob/gh-pages/CONTRIBUTING.md
+[styles]: https://github.com/carpentries/styles/
+
+[cran-checkpoint]: https://cran.r-project.org/package=checkpoint
+[cran-knitr]: https://cran.r-project.org/package=knitr
+[cran-stringr]: https://cran.r-project.org/package=stringr
+
+[jekyll-collection]: https://jekyllrb.com/docs/collections/
+[jekyll-install]: https://jekyllrb.com/docs/installation/
+[jekyll-windows]: http://jekyll-windows.juthilo.com/
+[jekyll]: https://jekyllrb.com/
+[jupyter]: https://jupyter.org/
+
+[kramdown]: https://kramdown.gettalong.org/
+[pandoc]: https://pandoc.org/
+[pyyaml]: https://pypi.python.org/pypi/PyYAML
+[r-markdown]: https://rmarkdown.rstudio.com/
+
+[rstudio]: https://www.rstudio.com/
+[ruby-install-guide]: https://www.ruby-lang.org/en/downloads/
+[ruby-installer]: https://rubyinstaller.org/
+[rubygems]: https://rubygems.org/pages/download/
+[yaml]: http://yaml.org/
