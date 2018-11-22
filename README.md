@@ -65,15 +65,11 @@ Make sure **Sydney-Informatics-Hub** and not your personal account is the owner.
 
 Keep the repo **public** and do _not_ include a README.
 
-Once the repo has been created on Sydney-Informatics-Hub, return to your local clone of the **template** and execute the commands shown to add this new GitHub repo as a remote, and then ```push -u``` to it
-
-<p align="center">
-<img src="fig/R04.png" height="120">
-</p>
+Once the repo has been created on Sydney-Informatics-Hub, return to your local clone of the **template** and execute these commands to add this new GitHub repo as a remote, and then ```push -u``` to it
 
 ```
 git remote add origin https://github.com/Sydney-Informatics-Hub/training.<series>.<course>.git
-git push -u origin master
+git push -u origin gh-pages
 ```
 
 Finally, add the **Training** Team to the repo, so that all members will be able to edit it. Go to the **Settings** tab at top right of the repo page on GitHub.com, and select _Collaborators & teams_ from the nav menu on the left. Then select _Add a team_:
