@@ -11,7 +11,7 @@ port: 4100
 carpentry: "sih"
 
 # Overall title for pages.
-title: "SIH Training template"
+title: "SIH Training template FIXME"
 series_name: "FIXME Series"
 
 #------------------------------------------------------------
@@ -111,4 +111,3 @@ highlighter: rouge
 # Plugins
 plugins:
   - jemoji
-  - "jekyll-github-metadata"
