@@ -6,7 +6,7 @@
 
 The first step is to make a copy of the **training.template** repository, which you will then edit to create your training course.
 
-Make a new directory where you want to keep your local copy of your course repo, and initilise it as a git repository:
+Make a new directory where you want to keep your local copy of the course repo, and initialise it as a git repository:
 
 ```
 mkdir /training.course.name && cd !$
@@ -30,7 +30,7 @@ You will now have a skeleton of the course website, ready for editing. The templ
 
 ### 2. Create a course repo on Sydney-Informatics-Hub
 
-Go to the Sydney Informatics Hub external git [site](https://github.com/Sydney-Informatics-Hub), and create a new repository
+Go to the Sydney Informatics Hub [external git site](https://github.com/Sydney-Informatics-Hub) (this site!), and create a new repository
 
 ![Create New repo](fig/R01.png)
 
@@ -56,17 +56,18 @@ Finally, add the **Training** Team to the repo, so that all members will be able
 
 ## Contributing
 
-We welcome all contributions to improve our courses! Maintainers will do their best to help you if you have any
+We welcome all contributions to improve our courses. Maintainers will do their best to help if you have any
 questions, concerns, or experience any difficulties along the way.
 
 We'd like to ask you to familiarise yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
-The Carpentries' [detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even how to write new episodes.
+The Carpentries' [detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and how to write new episodes.
 
 ## Maintainer(s)
 
+* Darya Vanichkina
 * Hayim Dar
 * Nathaniel Butterworth
-* Tracy Chew.
+* Tracy Chew
 
 Contact [sih.training@sydney.edu.au](mailto:sih.training@sydney.edu.au).
 
