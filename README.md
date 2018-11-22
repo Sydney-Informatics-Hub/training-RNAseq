@@ -98,26 +98,39 @@ Before you being to edit content, there are a number of **settings** you need to
    
 2. The template includes a **setup.md** file that explains how to prepare your computer to connect to Artemis HPC, the Uni's compute cluster. You may need this information for your lesson; if not, adapt as required.
 
-3. The template also includes one _episode_ (**01-FIXME.md**) and one _break_ (**02_break.md**) page, stored in the **\_episodes** folder. This is wherethe content of your lessons should go. Familiarise yourself with the Carpentries' [lesson example and guidelines][lesson-example] before you begin editing!
+3. The **index.md** file is the homepage of your course.
+  - If this project is _not_ of type _series_ then a syllabus table will be automatically generated for you, containing the episodes in the lesson and an expected timeline.
+  - If this project is a member of a series, include that information in the **Follow-on courses** paragraph. Else delete this.
+  - If this project _is_ a series page, then replace the **Follow-on courses** paragraph with an table listing each course and it's decription, eg (in Markdown code)
+  ```Markdown
+  | Lesson  | Overview |
+  | ------- | ---------- |
+  | [Course 1]({{ site.sih_pages }}/training.<series>.<course1>) | Descrption 1 |
+  | [Course 2]({{ site.sih_pages }}/training.<series>.<course2>) | Descrption 2 |
+  ```
 
-- Lessons will be generated in filename order, so name them 01_, 02_, etc.
 
-- Pay attention to the _frontmatter_ of the lesson files:
-```YAML
----
-title: "FIXME"
-teaching: 20
-exercises: 0
-questions:
-- "FIXME"
-objectives:
-- "FIXME"
-keypoints:
-- "FIXME"
----
-```
+
+4. The template also includes one _episode_ (**01-FIXME.md**) and one _break_ (**02_break.md**) page, stored in the **\_episodes** folder. This is wherethe content of your lessons should go. Familiarise yourself with the Carpentries' [lesson example and guidelines][lesson-example] before you begin editing!
+  - Lessons will be generated in filename order, so name them 01_, 02_, etc.
+  - Pay attention to the _frontmatter_ of the lesson files:
+   ```YAML
+   ---
+   title: "FIXME"
+   teaching: 20
+   exercises: 0
+   questions:
+   - "FIXME"
+   objectives:
+   - "FIXME"
+   keypoints:
+   - "FIXME"
+   ---
+   ```
   These lines are essential. At minimum, any pages you want rendered will need to begin with two lines of ```---```; the lines enclosed by these triple-dashes are [YAML][yaml] variable declarations.
   Make sure to estimate the **times** you expect the lesson components will take.
+  
+  - **Figures** may be kept in the ```fig``` subfolder. There are other folders for various content as well.
 
 
 
