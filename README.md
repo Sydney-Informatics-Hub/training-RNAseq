@@ -6,7 +6,7 @@
 
 The first step is to make a copy of the **training.template** repository, which you will then edit to create your training course.
 
-Make a new directory where you want to keep your local copy of your course repo, and initilise it as a git repository:
+Make a new directory where you want to keep your local copy of the course repo, and initialise it as a git repository:
 
 ```
 mkdir /training.course.name && cd !$
@@ -30,19 +30,25 @@ You will now have a skeleton of the course website, ready for editing. The templ
 
 ### 2. Create a course repo on Sydney-Informatics-Hub
 
-Go to the Sydney Informatics Hub external git [site](https://github.com/Sydney-Informatics-Hub), and create a new repository
+Go to the Sydney Informatics Hub [external git site](https://github.com/Sydney-Informatics-Hub) (this site!), and create a new repository
 
-![Create New repo](fig/R01.png)
+<p align="center">
+<img src="fig/R01.png" height="200">
+</p>
 
 Make sure **Sydney-Informatics-Hub** and not your personal account is the owner. Name the repo whatever you wish, but I suggest keeping to a convention following **training.<series>.<course>**, eg **training.artemis.introhpc**.
 
-![Name New repo](fig/R02.png)
+<p align="center">
+<img src="fig/R02.png" height="500">
+</p>
 
 Keep the repo **public** and do _not_ include a README.
 
 Once the repo has been created on Sydney-Informatics-Hub, return to your local clone of the **template** and execute the commands shown to add this new GitHub repo as a remote, and then ```push -u``` to it
 
-![Add as remote](fig/R04.png)
+<p align="center">
+<img src="fig/R04.png" height="120">
+</p>
 
 ```
 git remote add origin https://github.com/Sydney-Informatics-Hub/training.<series>.<course>.git
@@ -51,22 +57,24 @@ git push -u origin master
 
 Finally, add the **Training** Team to the repo, so that all members will be able to edit it. Go to the **Settings** tab at top right, and select _Collaborators & teams_ from the nav menu on the left:
 
-![Add team](fig/R05.png)
-
+<p align="center">
+<img src="fig/R05.png" height="300">
+</p>
 
 ## Contributing
 
-We welcome all contributions to improve our courses! Maintainers will do their best to help you if you have any
+We welcome all contributions to improve our courses. Maintainers will do their best to help if you have any
 questions, concerns, or experience any difficulties along the way.
 
 We'd like to ask you to familiarise yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
-The Carpentries' [detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even how to write new episodes.
+The Carpentries' [detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and how to write new episodes.
 
 ## Maintainer(s)
 
+* Darya Vanichkina
 * Hayim Dar
 * Nathaniel Butterworth
-* Tracy Chew.
+* Tracy Chew
 
 Contact [sih.training@sydney.edu.au](mailto:sih.training@sydney.edu.au).
 
