@@ -214,12 +214,14 @@ This **template** may be updated from time to time. If you ever wish or need to 
 
 You will need to pay careful attention to the merge process to ensure that none of your content is overwritten by the update. You will probably want to have a graphical Git-enabled editor or _diff_ tool to let you easily see and approve/reject any merge conflicts. 
 
-If you **created your course repo from the template originally**, as in these instructions, then the changes you have made should take precedence, and there should be few problems. However, new _content_ may be added to the template -- such additions will always include the phrase **"FIXME"**, so make sure to search for these in your repo. (Running ```make lesson-fixme``` in your repo directory will find any remaining "FIXME"s in your files).
+If you **created your course repo from the template originally**, as in these instructions, then the changes you have made should take precedence, and there should be few problems.
+
+However, new _content_ may be added to the template -- such additions will always include the phrase **"FIXME"**, so make sure to search for these in your repo. (Running ```make lesson-fixme``` in your repo directory will find any remaining "FIXME"s in your files).
 
 At your local copy
 
 ```
-git pull template
+git pull template gh-pages
 ```
 
 
