@@ -30,9 +30,9 @@ The first step is to make a copy of the **training.template** repository, which 
 Make a new directory where you want to keep your local copy of the course repo, and initialise it as a git repository:
 
 ```
-mkdir /training.course.name && cd !$
+mkdir /training.course.name
 
-git init
+cd !$ && git init
 ```
 
 Now add the template repository as a remote, calling it **template**
@@ -45,7 +45,7 @@ Finally, pull in the template
 
 ```
 git fetch template gh-pages
-git checkout -b gh-pages
+git checkout -b gh-pages template/gh-pages
 ```
 
 You will now have a skeleton of the course website, ready for editing. The template repo will be available as a remote repository, should you wish to update the template files later on.
