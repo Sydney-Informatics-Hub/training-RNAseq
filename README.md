@@ -41,7 +41,7 @@ Now add the template repository as a remote, calling it **template**
 git remote add template https://github.com/Sydney-Informatics-Hub/training.template.git
 ```
 
-Finally, pull in the template
+Finally, fetch and checkout the template
 
 ```
 git fetch template gh-pages
