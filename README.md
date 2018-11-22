@@ -86,54 +86,57 @@ First, familiarise yourself with the [Contribution Guide](CONTRIBUTING.md) and h
 
 Before you being to edit content, there are a number of **settings** you need to change first:
 
-1. In the file **_config.yml**
-  - Set a **port** for your local rendering of your website (see below). You may be developing multiple lessons at the same time, and if you;d like to render more than one at once, then you should assing them different port numbers. When **jekyll** renders your website, it will display in your web-browser at the address ```localhost:<port>```.
-  - Edit the **title** and **series_name** of your course. If it is one off course not part of a series, then simply set this to "Home".
-  - Set the **kind** of course to "workshop" or "lesson" or "series":
-    * _lesson_ is the regular course page (See [Intro to Artemis](https://sydney-informatics-hub.github.io/training.artemis/) for an exmaple)
-    * _series_ is used as a landing/contents page for a group of lessons that form a theme. (See [Artemis series](https://sydney-informatics-hub.github.io/training.artemis/) for an example)
-    * _workshop_ is an event page to promote an actual instance or set of trainings covering these lessons. (See [GIS Workshop](https://sydney-informatics-hub.github.io/2018_12_10_GISworkshop/) for an example).
-   - If the course is part of a _series_, then set the **series_home** address to link to the series' page. Eg https://sydney-informatics-hub.github.io/training.artemis/ is the address of the _Artemis_ series.
-   - (If you do not wish to use the SIH branding, but want to keep a Carpentries brand for a course or workshop, then set the **carpentry** variable to "swc", "dc", "lc", or "cp" as desired).
+1.  In the file **_config.yml**
+    - Set a **port** for your local rendering of your website (see below). You may be developing multiple lessons at the same time, and if you;d like to render more than one at once, then you should assing them different port numbers. When **jekyll** renders your website, it will display in your web-browser at the address ```localhost:<port>```.
+    - Edit the **title** and **series_name** of your course. If it is one off course not part of a series, then simply set this to "Home".
+    - Set the **kind** of course to "workshop" or "lesson" or "series":
+      * _lesson_ is the regular course page (See [Intro to Artemis](https://sydney-informatics-hub.github.io/training.artemis/) for an exmaple)
+      * _series_ is used as a landing/contents page for a group of lessons that form a theme. (See [Artemis series](https://sydney-informatics-hub.github.io/training.artemis/) for an example)
+      * _workshop_ is an event page to promote an actual instance or set of trainings covering these lessons. (See [GIS Workshop](https://sydney-informatics-hub.github.io/2018_12_10_GISworkshop/) for an example).
+        1. If you are developing a workshop page, rename **index.md** to hidden file **.lesson_index.md** and rename hidden file **.workshop_index.md** to **index.md**. 
+        2. See **_Making a Workshop site_** below.
+    - If the course is part of a _series_, then set the **series_home** address to link to the series' page. Eg https://sydney-informatics-hub.github.io/training.artemis/ is the address of the _Artemis_ series.
+    - (If you do not wish to use the SIH branding, but want to keep a Carpentries brand for a course or workshop, then set the **carpentry** variable to "swc", "dc", "lc", or "cp" as desired).
    
-2. The template includes a **setup.md** file that explains how to prepare your computer to connect to Artemis HPC, the Uni's compute cluster. You may need this information for your lesson; if not, adapt as required.
+2.  The template includes a **setup.md** file that explains how to prepare your computer to connect to Artemis HPC, the Uni's compute cluster. You may need this information for your lesson; if not, adapt as required.
 
-3. The **index.md** file is the homepage of your course.
-  - If this project is _not_ of type _series_ then a syllabus table will be automatically generated for you, containing the episodes in the lesson and an expected timeline.
-  - If this project is a member of a series, include that information in the **Follow-on courses** paragraph. Else delete this.
-  - If this project _is_ a series page, then replace the **Follow-on courses** paragraph with an table listing each course and it's decription, eg (in Markdown code)
-  ```Markdown
-  | Lesson  | Overview |
-  | ------- | ---------- |
-  | [Course 1]({{ site.sih_pages }}/training.<series>.<course1>) | Descrption 1 |
-  | [Course 2]({{ site.sih_pages }}/training.<series>.<course2>) | Descrption 2 |
-  ```
+3.  The **index.md** file is the homepage of your course.
+    - If this project is _not_ of type _series_ then a syllabus table will be automatically generated for you, containing the episodes in the lesson and an expected timeline.
+    - If this project is a member of a series, include that information in the **Follow-on courses** paragraph. Else delete this.
+    - If this project _is_ a series page, then replace the **Follow-on courses** paragraph with an table listing each course and it's decription, eg (in Markdown code)
+    ```Markdown
+    | Lesson  | Overview |
+    | ------- | ---------- |
+    | [Course 1]({{ site.sih_pages }}/training.<series>.<course1>) | Descrption 1 |
+    | [Course 2]({{ site.sih_pages }}/training.<series>.<course2>) | Descrption 2 |
+    ```
 
-
-
-4. The template also includes one _episode_ (**01-FIXME.md**) and one _break_ (**02_break.md**) page, stored in the **\_episodes** folder. This is wherethe content of your lessons should go. Familiarise yourself with the Carpentries' [lesson example and guidelines][lesson-example] before you begin editing!
-  - Lessons will be generated in filename order, so name them 01_, 02_, etc.
-  - Pay attention to the _frontmatter_ of the lesson files:
-   ```YAML
-   ---
-   title: "FIXME"
-   teaching: 20
-   exercises: 0
-   questions:
-   - "FIXME"
-   objectives:
-   - "FIXME"
-   keypoints:
-   - "FIXME"
-   ---
-   ```
-  These lines are essential. At minimum, any pages you want rendered will need to begin with two lines of ```---```; the lines enclosed by these triple-dashes are [YAML][yaml] variable declarations.
-  Make sure to estimate the **times** you expect the lesson components will take.
+4.  The template also includes one _episode_ (**01-FIXME.md**) and one _break_ (**02-break.md**) page, stored in the **\_episodes** folder. This is wherethe content of your lessons should go. Familiarise yourself with the Carpentries' [lesson example and guidelines][lesson-example] before you begin editing!
+    - Lessons will be generated in filename order, so name them 01_, 02_, etc.
+    - Pay attention to the _frontmatter_ of the lesson files:
+    ```YAML
+    ---
+    title: "FIXME"
+    teaching: 20
+    exercises: 0
+    questions:
+    - "FIXME"
+    objectives:
+    - "FIXME"
+    keypoints:
+    - "FIXME"
+    ---
+    ```
+    
+    These lines are essential. At minimum, any pages you want rendered will need to begin with two lines of ```---```; the lines enclosed by these triple-dashes are [YAML][yaml] variable declarations.
+    Make sure to estimate the **times** you expect the lesson components will take.
   
   - **Figures** may be kept in the ```fig``` subfolder. There are other folders for various content as well.
 
 
+### Making a Workshop site
 
+> Darya please explain..!
 
 ### ii. Setting up Jekyll to render your lesson website locally
 
@@ -175,9 +178,25 @@ bundle install
 ```
 to ensure all required Ruby Gems are installed. Perhaps add a ```bundle update``` too for good measure!
 
-If you want to run `bin/lesson_check.py` (which is invoked by `make lesson-check`)
-you will need Jekyll (so that you have its Markdown parser, which is called Kramdown)
-and the [PyYAML][pyyaml] module for Python 3.
+### iii. Checking that your site conforms to the Carpentries style
+
+The Carpentries template comes with some checking scripts.
+
+Running ```make lesson-fixme``` will list all instances of the phrase **FIXME** remianing in your code base. 
+
+Running ```make lesson-check``` will do the above, and report on various different departures from the Carpentries style, or possible errors
+  * The following errors can be ignored:
+  ```
+  Missing required file ./_extras/discuss.md
+  Missing required file ./_extras/guide.md
+  ./_config.yml: configuration carpentry value sih is not in ('swc', 'dc', 'lc', 'cp')
+  ```
+  If you want to include the **discussion** or **guide** pages, then unhide them (remove the ```.``` from the front of their filenames) in the **\_extras** folder and add the content you desire.
+  
+  * The following style warnings may also be ignored
+    - ```Unknown or missing blockquote type None``` occurs when you use a ```> block quote``` environment that is not one of the special types in the Carpentries style
+  
+  
 
 ## Contributing
 
