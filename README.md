@@ -1,5 +1,7 @@
 # Artemis Training Course Template
 
+**This template was last edited on 22.11.18**
+
 This repo is a skeleton or template of SIH's Carpentries-based training course websites. Use this when creating a new training course for SIH.
 
 ## Contributing
