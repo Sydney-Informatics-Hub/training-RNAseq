@@ -1,6 +1,25 @@
 # Artemis Training Course Template
 
-## 1 Getting this template
+This repo is a skeleton or template of SIH's Carpentries-based training course websites. Use this when creating a new training course for SIH.
+
+## Contributing
+
+We welcome all contributions to improve our courses, and to create new ones. Maintainers will do their best to help if you have any questions, concerns, or experience any difficulties along the way.
+
+We'd like to ask you to familiarise yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
+The Carpentries' [detailed guidelines][lesson-example] before jumping in.
+
+This document will attempt to outline the process for creating or subtantially editing a training course website.
+
+**If you simply wish to make small edits or suggestions to an existing course, this is not the repo you're looking for!**
+
+<p align="center">
+<img src="https://66.media.tumblr.com/f82a0fa38e59f525a6b04e80ba1bab8b/tumblr_na4nu2hYJQ1qe0jbao1_500.gif" height="150">
+</p>
+
+<br>
+
+## Step 1: Getting this template
 
 ### i. Clone the **training.template** repo
 
@@ -28,7 +47,7 @@ git pull template gh-pages
 
 You will now have a skeleton of the course website, ready for editing. The template repo will be available as a remote repository, should you wish to update the template files later on.
 
-### i. Create a course repo on Sydney-Informatics-Hub
+### ii. Create a course repo on Sydney-Informatics-Hub
 
 Go to the Sydney Informatics Hub [external git site](https://github.com/Sydney-Informatics-Hub) (this site!), and create a new repository
 
@@ -61,11 +80,11 @@ Finally, add the **Training** Team to the repo, so that all members will be able
 <img src="fig/R05.png" height="300">
 </p>
 
-### 3. Checking your work
+### iii. Checking your work
 
 The [SWC template][lesson-example] this is based off of includes some scripts to check your lessons. Running ```make lesson-check``` in your local repo directory will check for formatting and setup issues.
 
-### (4. Updating the template)
+### (iv. Updating the template)
 
 This **template** may be updated from time to time. If you ever wish or need to incorporate such updates into your customised course websites, you do so by _pulling_ in the changes from the **template** repo into your **course** repo.
 
@@ -78,12 +97,14 @@ At your local copy
 ```
 ```
 
-## 2. Writing a course
+<br>
+## Step 2: Writing a course
 
 ### i. Editing the template
 
 First, familiarise yourself with the [Contribution Guide](CONTRIBUTING.md) and have a look at The Carpentries' [lesson example and guidelines][lesson-example] on Carpentries-style lesson formatting.
 
+#### a. Settings
 Before you being to edit content, there are a number of **settings** you need to change first:
 
 1.  In the file **_config.yml**
@@ -110,10 +131,17 @@ Before you being to edit content, there are a number of **settings** you need to
     | [Course 1]({{ site.sih_pages }}/training.<series>.<course1>) | Descrption 1 |
     | [Course 2]({{ site.sih_pages }}/training.<series>.<course2>) | Descrption 2 |
     ```
+  
+#### b. Content
 
-4.  The template also includes one _episode_ (**01-FIXME.md**) and one _break_ (**02-break.md**) page, stored in the **\_episodes** folder. This is wherethe content of your lessons should go. Familiarise yourself with the Carpentries' [lesson example and guidelines][lesson-example] before you begin editing!
-    - Lessons will be generated in filename order, so name them 01_, 02_, etc.
-    - Pay attention to the _frontmatter_ of the lesson files:
+The homepage for your site is **index.md**, so be sure to include relevant information there.
+
+Lesson sections are called "_episodes_" and are pages created in the **\_episodes** subfolder.
+
+The template also includes one _episode_ (**01-FIXME.md**) and one _break_ (**02-break.md**) page, stored in the **\_episodes** folder. This is wherethe content of your lessons should go. Familiarise yourself with the Carpentries' [lesson example and guidelines][lesson-example] before you begin editing!
+
+  - Lessons will be generated in filename order, so name them 01_, 02_, etc.
+  - Pay attention to the _frontmatter_ of the lesson files:
     ```YAML
     ---
     title: "FIXME"
@@ -130,11 +158,11 @@ Before you being to edit content, there are a number of **settings** you need to
     
     These lines are essential. At minimum, any pages you want rendered will need to begin with two lines of ```---```; the lines enclosed by these triple-dashes are [YAML][yaml] variable declarations.
     Make sure to estimate the **times** you expect the lesson components will take.
-  
-  - **Figures** may be kept in the ```fig``` subfolder. There are other folders for various content as well.
+
+**Figures** may be kept in the ```fig``` subfolder. There are other folders for various content as well.
 
 
-### Making a Workshop site
+#### c. Making a Workshop site
 
 > Darya please explain..!
 
@@ -196,15 +224,6 @@ Running ```make lesson-check``` will do the above, and report on various differe
   * The following style warnings may also be ignored
     - ```Unknown or missing blockquote type None``` occurs when you use a ```> block quote``` environment that is not one of the special types in the Carpentries style
   
-  
-
-## Contributing
-
-We welcome all contributions to improve our courses. Maintainers will do their best to help if you have any
-questions, concerns, or experience any difficulties along the way.
-
-We'd like to ask you to familiarise yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
-The Carpentries' [detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and how to write new episodes.
 
 ## Maintainer(s)
 
