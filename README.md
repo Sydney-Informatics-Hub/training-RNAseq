@@ -44,7 +44,8 @@ git remote add template https://github.com/Sydney-Informatics-Hub/training.templ
 Finally, pull in the template
 
 ```
-git pull template gh-pages
+git fetch template gh-pages
+git checkout -b gh-pages
 ```
 
 You will now have a skeleton of the course website, ready for editing. The template repo will be available as a remote repository, should you wish to update the template files later on.
@@ -93,6 +94,7 @@ If you **created your course repo from the template originally**, as in these in
 At your local copy
 
 ```
+git pull template
 ```
 
 <br>
