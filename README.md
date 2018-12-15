@@ -49,7 +49,7 @@ You can carry out this step on GitHub directly (Option 1), or by downloading thi
 
     - If you are creating a <u>workshop website</u>, this name should have the form YYYY-MM-DD-\<workshopID>, where YYYY-MM-DD is the start date of the workshop, and workshopID is a human readable label for others to understand which workshop this could be referring to. For example, 2018-11-28-bmcR or 2018-12-12-IntroArtemis.
     - If you are creating a <u>lesson website</u>, the name should have the form: lesson-\<series>-\<course>, for example *lesson-bmc-introR*.
-    - If you are creating a <u>series website</u>, the name should have the form: \<series>, for example *training-artemis*.
+    - If you are creating a <u>series website</u>, the name should have the form: training-\<series>, for example *training-artemis*.
 
 
 6. Make sure the repository is public.
