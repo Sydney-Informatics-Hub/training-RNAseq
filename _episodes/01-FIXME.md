@@ -21,7 +21,7 @@ The Sydney Informatics Hub (SIH) is a _[Core Research Facility](https://sydney.e
   <figcaption> USyd Core Research Facilities <a href="https://sydney.edu.au/research/facilities.html">https://sydney.edu.au/research/facilities.html</a></figcaption>
 </figure><br>
 
-**Artemis HPC** itself is a multi-million dollar set of equipment, a 'supercomputer', is the main piece of equipment supported by SIH. However, we also provide a wide range of research services to aid investigators, such as
+The **Artemis HPC** 'supercomputer', itself a multi-million dollar piece of equipment, is the main equipment supported by SIH. However, we also provide a wide range of research services to aid investigators, such as
 
 * [Training](https://informatics.sydney.edu.au/training/)
 * [Statistics Consulting](https://informatics.sydney.edu.au/services/statistics/)
