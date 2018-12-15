@@ -12,9 +12,9 @@ Identify whether you want:
 - to create a landing page for a series of courses, linking together multiple courses
 
 All three of these types of websites can be made using this repository:
-* _workshop_ is probably the one you'll use most frequently, and allows you to create an event landing page. It is designed to promote an actual instance or set of trainings covering one of our lessons, for example the [GIS workshop in December 2018](https://sydney-informatics-hub.github.io/2018_12_10_GISworkshop/).
-* _lesson_ creates a series of pages which can be used to develop course materials, for example [Intro to Artemis](https://sydney-informatics-hub.github.io/training.artemis.introhpc/). These course materials will be reused and updated for multiple deliveries throughout the year(s).
-* _series_ is used as a landing/contents page for a group of lessons that form a theme, for example the [Artemis series](https://sydney-informatics-hub.github.io/training.artemis/).
+* `workshop` is probably the one you'll use most frequently, and allows you to create an event landing page. It is designed to promote an actual instance or set of trainings covering one of our lessons, for example the [GIS workshop in December 2018](https://sydney-informatics-hub.github.io/2018_12_10_GISworkshop/).
+* `lesson` creates a series of pages which can be used to develop course materials, for example [Intro to Artemis](https://sydney-informatics-hub.github.io/training.artemis.introhpc/). These course materials will be reused and updated for multiple deliveries throughout the year(s).
+* `series` is used as a landing/contents page for a group of lessons that form a theme, for example the [Artemis series](https://sydney-informatics-hub.github.io/training.artemis/).
 
 Write down which of the three you want: `workshop`, `lesson`, or `series`.
 
@@ -172,7 +172,7 @@ Lesson sections are called "_episodes_" and can be created in two distinct ways:
 
 The template includes:
   - one _episode_ (**01-FIXME.md**) and one _break_ (**02-break.md**) page, stored in the **\_episodes** folder. You can use these to start developing your lesson materials in markdown.
-  - one *episode* (**01-FIXME.Rmd**) and one *break* (**02-break.Rmd**) in **\_episodes_rmd** folder.
+  - one *episode* (**01-FIXME.Rmd**) and one *break* (**02-break.Rmd**) in **\_episodes_rmd** folder. FIXME need to make these files!
 
 
 Irrespective of which of the two approaches you choose, lesson pages will be generated in filename order, so name them 01_, 02_, etc.
