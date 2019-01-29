@@ -4,11 +4,12 @@
 <div class="jumbotron">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <h2>{{page.venue}}</h2>
+      <h2>{{site.title}}</h2>
       <div class="row">
         <div class="col-md-6">
           <p>{{page.humandate}}</p>
           <p>{% if page.humantime %}{{page.humantime}}{% endif %}</p>
+          <p>{% if page.venue %}{{page.venue}}{% endif %}</p>
         </div>
         <div class="col-md-6">
           <p>
