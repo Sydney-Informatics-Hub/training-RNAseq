@@ -3,6 +3,8 @@ layout: base
 ---
 {% include main_title.html %}
 {{ content }}
+{% comment %}
 {% if site.kind != "series" %}
 {% include syllabus.html %}
 {% endif %}
+{% endcomment %}

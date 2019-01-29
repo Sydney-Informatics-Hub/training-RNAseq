@@ -31,18 +31,24 @@
       <a href="{{ site.carpentries_site }}" class="pull-left">
         <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/cp-logo-blue.svg %}" alt="The Carpentries logo" />
       </a>
-      {% elsif site.carpentry == "sih" %}
+      {% elsif site.carpentry == "si" %}
+      <a href="{{ site.training_home }}" class="pull-left">
+        <img class="navbar-logo" src="{{ page.root }}/assets/img/sydcarpentry.png" alt="Sydney Informatics Hub" />
+      </a>
+      {% elsif site.carpentry == "sp" %}
       <a href="{{ site.training_home }}" class="pull-left">
         <img class="navbar-logo" src="{{ page.root }}/assets/img/sydcarpentry.png" alt="Sydney Informatics Hub" />
       </a>
       {% endif %}
 
       {% comment %} Always show link to home page. {% endcomment %}
+      {% comment DV - removed Hayim code - always show series home %}
       {% if site.kind == "series" %}
-      <a class="navbar-brand" style="padding-left:20px" href="{{ site.training_home }}">Training Home</a>
+      <a class="navbar-brand" style="padding-left:20px" href="{{ site.training_home }}">Training Homei</a>
       {% else %}
-      <a class="navbar-brand" style="padding-left:20px" href="{{ site.series_home }}">{{ site.series_name }}</a>
       {% endif %}
+      {% endcomment %}
+      <a class="navbar-brand" style="padding-left:20px" href="{{ site.series_home }}">{{ site.series_name }}</a>
     </div>
 
     {% comment %} Collapsible items start here. {% endcomment %}
