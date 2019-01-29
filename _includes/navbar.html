@@ -1,6 +1,9 @@
 {% comment %}
   Lesson navigation bar.
 {% endcomment %}
+
+{% include gh_variables.html %}
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -18,15 +21,15 @@
       </a>
       {% elsif site.carpentry == "dc" %}
       <a href="{{ site.dc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ page.root }}/assets/img/dc-icon-black.svg" alt="Data Carpentry logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/dc-icon-black.svg %}" alt="Data Carpentry logo" />
       </a>
       {% elsif site.carpentry == "lc" %}
       <a href="{{ site.lc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ page.root }}/assets/img/lc-icon-black.svg" alt="Library Carpentry logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/lc-icon-black.svg %}" alt="Library Carpentry logo" />
       </a>
       {% elsif site.carpentry == "cp" %}
       <a href="{{ site.carpentries_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ page.root }}/assets/img/cp-logo-blue.svg" alt="The Carpentries logo" />
+        <img class="navbar-logo" src="{{ relative_root_path }}{% link /assets/img/cp-logo-blue.svg %}" alt="The Carpentries logo" />
       </a>
       {% elsif site.carpentry == "sih" %}
       <a href="{{ site.training_home }}" class="pull-left">
@@ -53,10 +56,10 @@
         <li><a href="{{ page.root }}{% link setup.md %}">Setup</a></li>
         {% comment %} Show lesson episodes for lessons. {% endcomment %}
         <li class="dropdown">
-          <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <a href="{{ relative_root_path }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
           <ul class="dropdown-menu">
             {% for episode in site.episodes %}
-            <li><a href="{{ page.root }}{{ episode.url }}">{{ episode.title }}</a></li>
+            <li><a href="{{ relative_root_path }}{{ episode.url }}">{{ episode.title }}</a></li>
             {% endfor %}
 	          <li role="separator" class="divider"></li>
             <li><a href="{{ page.root }}{% link aio.md %}">All in one page (Beta)</a></li>
@@ -69,9 +72,9 @@
         <li class="dropdown hidden-xs">
           <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ page.root }}{% link reference.md %}">Reference</a></li>
+            <li><a href="{{ relative_root_path }}{% link reference.md %}">Reference</a></li>
             {% for extra in site.extras %}
-            <li><a href="{{ page.root }}{{ extra.url }}">{{ extra.title }}</a></li>
+            <li><a href="{{ relative_root_path }}{{ extra.url }}">{{ extra.title }}</a></li>
             {% endfor %}
           </ul>
         </li>

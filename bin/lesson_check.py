@@ -35,6 +35,7 @@ REQUIRED_FILES = {
     '%/README.md': False,
     '%/_extras/discuss.md': True,
     '%/_extras/guide.md': True,
+    '%/_config.yml': True,
     '%/index.md': True,
     '%/reference.md': True,
     '%/setup.md': True,
@@ -102,6 +103,7 @@ BREAK_METADATA_FIELDS = {
 }
 
 # How long are lines allowed to be?
+# Please keep this in sync with .editorconfig!
 MAX_LINE_LEN = 100
 
 
