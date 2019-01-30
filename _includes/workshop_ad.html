@@ -12,6 +12,12 @@
           <p>{% if page.venue %}{{page.venue}}{% endif %}</p>
         </div>
         <div class="col-md-6">
+          {% if page.organiser %}
+          <p>
+          <strong>Organisers:</strong>
+          {{page.organiser | join: ', ' %}}
+          </p>
+          {% endif %}
           <p>
           <strong>Instructors:</strong>
           {% if page.instructor %}
