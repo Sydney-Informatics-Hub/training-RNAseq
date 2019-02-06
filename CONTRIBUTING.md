@@ -141,7 +141,7 @@ You can also [reach them by email][email].
 [sih-email]: mailto:sih.training@sydney.edu.au
 [sih-site]: https://informatics.sydney.edu.au
 [sih-training]: https://informatics.sydney.edu.au/training
-[sih-lessons]: {{ site.sih_pages }}/training.home/
+[sih-lessons]: {{ site.training_home }}
 [issues]: {{ site.sih_github }}/{{ site.github.repository_name }}/issues/
 [usyd-github]: https://github.sydney.edu.au
 [usyd-github-join]: https://github.sydney.edu.au/join
