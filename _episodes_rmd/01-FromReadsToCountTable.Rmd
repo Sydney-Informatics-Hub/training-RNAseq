@@ -1,0 +1,234 @@
+---
+title: "From Reads To a Count Table"
+author: "Darya Vanichkina"
+date: "21/03/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## 1. Can I use my data? Assessing the quality of your fastq file
+
+The first step of any NGS sequencing data analysis is to assess the quality of the generated reads, to understand whether the sequencer was working properly and we can trust the generated data. To do this, we use a tool called fastqc to calculate the summary statistics about the quality for each base position across all of the generated reads:
+
+1. Open your terminal application
+2. Type the following to log on to the University's Artemis HPC. This is a "standard" Linux filesystem, which we will navigate around in and interact with using basic Unix commands. [If you need additional support in working with such an interface, we highly recommend attending one of our Unix courses, followed by our HPC series].
+```
+ssh yourunikey@hpc.sydney.edu.au
+```
+
+3. Type the following to add fastqc to the list of software that is available to us on the HPC:
+```
+module load fastqc
+```
+
+> ## Note for the curious
+> 
+> If you've used a terminal before, on your local machine or on a "normal" server, you may wonder why
+> we couldn't just run `fastqc` as an executable directly from the command line. The reason for this is that on large,
+> multi-user systems (like Artemis, or most other University HPC clusters you'll encounter in your career), specialised
+> software that is not used by everybody (so pretty much all bioinformatics tools) or software where versions are updated frequently
+> (like R or python) are not "linked" to your environment, and have to be explicitly added to your $PATH via the `module load` command. 
+> This means that if you have developed a tool that works only with R version 3.1.2, for example, you can `module load R/3.1.2`
+> and be confident that your tool will work, while your colleague can use version 3.5, which is required for a package he needs to
+> run. 
+> Other useful commands that can help you interact with modules are `module avail`, which tells you which modules are installed on
+> the system, `module list`, which lists which modules are already active in your environment, and `module purge`, which unloads
+> all of the modules you currently have loaded. This can sometimes be useful if you're having weird issues with your environment.
+> 
+{: .callout}
+
+
+4. Download the data to the HPC. In this exercise, we will store the data in the /projects/training/ folder. You will have a /projects/RDS-YOURPROJECTID/ folder for your actual "production" projects, after you have submitted a [Research Data Management Plan](https://dashr.sydney.edu.au/) to access Artemis or RDS for HPC/storage of your research data.
+
+```
+cd /project/Training/
+mkdir yourunikey
+cd yourunikey
+mkdir data
+wget FIXME
+tar -xvzf FIXME
+cd ../
+```
+
+5. In order to run fastqc we will need to use a PBS script to specify the resources we'd like to use, and a script with the actual code we'd like to run. PBS stands for "portable batch system", which is the name of the system that manages the queue of jobs on Artemis. Other queuing systems include SLURM and Torque. 
+
+Below is an example of a basic PBS script, that will run fastqc on our dataset:
+
+```
+# fastq script
+
+```
+
+We could also have stored the commands themselves in what is called a shell script, and specified all of the pbs parameters on the command line. The shell script:
+
+```
+
+```
+
+To submit it we would do the following:
+
+```
+qsub -P -N fastqc -l select=1:ncpus=1:mem=10gb -l walltime=10:0:0 
+
+```
+
+Lets take a moment to explore what is going on in the two scripts:
+
+
+
+
+6. We 
+
+
+
+
+
+
+## 2. Building a genome index
+
+In order to quantitate how many reads map to which genes in the genome, we need 3 things:
+
+1. Good-quality read **data** (which we assessed in step 1)
+2. **An aligner**. 
+  When working with transcriptomic RNA-seq data, we recommend the following aligners:
+    - [STAR](https://github.com/alexdobin/STAR) - developed by Alex Dobin - for short-read whole-transcriptome sequencing data, which we will use in this workshop
+    - [BWA](https://github.com/lh3/bwa) - a genomic/DNA aligner, developed by Heng Li - for short-read sequencing data of small RNA (ex - miRNA libraries), where splicing is not expected to be 
+    - [minimap2](https://github.com/lh3/minimap2) - a transcriptomic aligner, also developed by Heng Li - for long read sequencing data such as Oxford Nanopore and PacBio. Unlike "standard" DNA/RNA aligners, minimap2 is able to handle the high error rate of these technologies.
+    
+Both STAR and minimap2 are what are called "splicing-aware" aligners, in that they are designed to align RNA-seq data, which needs to accomodate for (and not penalise too heavily) the natural "gaps" that occur when aligning RNA to genomic DNA sequence as a result of splicing.
+
+3. **A reference genome**
+  The genomes of many species have already been sequenced, and RNA-seq is often done on samples that come from these. We will focus the analysis below on working with human data, for whom the [genome](http://science.sciencemag.org/content/291/5507/1304) [was sequenced](https://www.nature.com/articles/35057062) in 2001. Prior to mapping, most aligners require you to construct and index the genome, so that the aligner can quickly and efficiently retrieve reference sequence information.
+
+
+> ## Note
+> If the genome of your organism is not available, you can (1) carry out de novo transcripome assembly and analysis, 
+> for example using [Trinity](https://github.com/trinityrnaseq/trinityrnaseq/wiki), 
+> and/or (2) use the genome of a closely related species, adjust the mapping parameters 
+> to allow for more mismatches, and map and quantitate to that organism as below.
+> 
+{: .callout}
+
+
+> ## Where do I get the genome for my organism of interest?
+> 
+> If you do bioinformatics for any length of time, you'll find that many people working on similar ideas without an 
+> overarching rulebook to standardize their activity results in a LOT of challenges with formats. One of the best known,
+> and most irritating, has to do with chromosomes and their naming conventions. The UCSC Genome Browser and NCBI, based in the US, use 
+> the prefix "chr" before the chromosome name, so chromosome 1 becomes "chr1", chromosome 2 - "chr2" etc. Ensembl and EBI, based in the
+> UK/EU, do not add a prefix to their chromosome names, so "1" and "2" are the names of the exact same bits of DNA...
+> Now, you'd think we could use a tool to just add "chr" to Ensembl coordinates to get the UCSC ones, but they can also join the
+> scaffolds together in a different way, call them by different names, and use 1 vs 0 based coordinates to specify a gene locations (which
+> in turn are different between the two). So, because annotations (including gene coordinates) usually use a specific convention (depending on where you're downloading the data from),  they must be matched to your genome of interest. As a general rule of thumb, we recommend:
+>
+> 1. For human and mouse data, use the [GENCODE annotations](https://www.gencodegenes.org/). You can read more about the GENCODE project in detail [here](https://www.gencodegenes.org/pages/publications.html), 
+> but briefly it is a project that aims to create a high-quality, reliable annotation of mouse and human genes. 
+> They also provide genome reference fasta files which match the chromosome names in the transcriptome annotations. 
+> This is the genome/annotation source we will use in this workshop.
+> 2. If you're not working with mouse or human, there are two primary repositories of genome information: [ENSEMBL](http://www.ensembl.org/) and [UCSC](https://genome.ucsc.edu/cgi-bin/hgGateway). 
+> If your organism is represented in only one of them, it's pretty simple to choose which one to use... 
+> 
+> 3. If your organism is available in both, we would recommend using ENSEMBL for gene annotation files + read mapping + gene quantification,
+> for differential expression and subsequent analysis (i.e. use Ensembl genome fasta and gtf file). If you plan to visualise your data in UCSC (which we highly recommend!), we would 
+> suggest downloading a genome fasta file from UCSC, map to that using STAR to generate a "wig" file, convert that to a bigWig, and visualise
+> in UCSC. If you then make an AMAZING discovery using the differential gene expression with the Ensembl annotation, but don't see it
+> supported at ALL in UCSC, you'll know that there might be something strange going on, and you should did deeper before publishing that Science paper...
+{: .discussion}
+
+To construct an index of the human reference genome using STAR, we need to carry out the following steps:
+
+#### 1. Download the data: fasta genome sequence and gtf annotation file
+We will use the [human gencode 29 comprehensive annotation](https://www.gencodegenes.org/human/), "PRI" from the primary chromosomes (this includes scaffolds, but not haplotypes and  assembly patches). Depending on your project, you may want to use the smaller "CHR" annotation, which excludes scaffolds as well. 
+
+The following script (please do not run) would have downloaded the entire genome and the correct annotation for you:
+
+```
+mkdir genome
+cd genome
+# download the "Genome sequence, primary assembly (GRCh38)" fasta file
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz
+# download the annotations that correspond to it 
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz
+```
+
+However, as this is a training session, in the interests of having the tasks finish in a reasonable amount of time, we will use only the data/annotations for chromosome 19 to map to (not to worry: we will provide a full count table for you for the differential expression analysis). 
+
+
+```
+# make sure we're in the right spot!
+pwd
+# should say something like "/project/Training/darya/"
+ls
+# should have "data" folder
+# make a new directory called genome 
+mkdir genome
+cd genome
+# download the "Genome sequence, primary assembly (GRCh38)" fasta file
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/GRCh38.primary_assembly.genome.fa.gz
+# download the annotations that correspond to it 
+wget ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_29/gencode.v29.primary_assembly.annotation.gtf.gz
+```
+
+
+#### 2. Write a script to build the genome index file
+
+We will use STAR to index the genome fasta file we just downloaded. We highly recommend you read and refer to the [STAR manual]() when doing your own RNA-seq work, as it explains the meaning of all of the many parameters that are essential to produce an accurate, reliable STAR alignment. 
+
+For example, when generating a reference genome index file, it is useful to understand the `--sjdbOverhang` parameter, which *specifies the length of the genomic sequence around the annotated junction to be used in constructing the splice junctions database. Ideally, this length should be equal to the ReadLength-1, where ReadLength is the length of the reads. For instance, for Illumina 2x100b paired-end reads, the ideal value is 100-1=99. In case of reads of varying length, the ideal value is max(ReadLength)-1*. 
+
+In our case, as we saw from fastqc, the read length was 100 nt, so the default value of 100 is suitable. However, for more "modern" Illumina data (PE 150+), this value is likely to be too short, and should be adjusted!
+
+Unfortunately, [as of right now](https://github.com/alexdobin/STAR/issues/532), STAR needs us to ungzip the genome files. In order to save space, we recommend ungzipping both the fasta and the gtf files, and then re-gzipping the *fasta* once the genome generation step is done. We will need the unzipped gtf file later.
+
+```
+gunzip GRCh38.primary_assembly.genome.fa.chr19.gz
+# wait
+gunzip gencode.v29.primary_assembly.annotation.chr19.gtf.gz
+# after genome has been generated
+gzip GRCh38.primary_assembly.genome.fa.chr19
+```
+
+
+To make the genome index, we need to run the following pbs script (call it `1903_genomeGenerate.pbs`):
+
+```
+#!/bin/bash
+# Building a star index file
+
+#PBS -P RDS-CORE-SIH4HPC-RW
+#PBS -N starIndex
+#PBS -l select=1:ncpus=3:mem=10gb
+#PBS -l walltime=24:0:0
+
+# Load modules
+
+module load star
+# set the runThreadN to be one less than your NCPU request!
+# STAR --runThreadN 2 --runMode genomeGenerate --genomeDir $GENOMEDIR/STAR --genomeFastaFiles $GENOMEDIR/GRCh38.primary_assembly.genome.chr19.fa --sjdbGTFfile $GENOMEDIR/gencode.v29.primary_assembly.annotation.chr19.gtf
+
+```
+
+We would then submit it as `pbs 1903_genomeGenerate.pbs`. 
+
+If we were building a fullscale genome (DO NOT DO THIS IN THE CLASS), these resources would usually be suitable:
+
+```
+#!/bin/bash
+# Building a star index file
+
+#PBS -P RDS-CORE-SIHsandbox-RW
+#PBS -N starIndex
+#PBS -l select=1:ncpus=24:mem=60gb
+#PBS -l walltime=24:0:0
+
+# Load modules
+
+module load star
+GENOMEDIR="/home/dvanichkina/scratch/190321_RNAseqR/genome/"
+STARPATH="/home/dvanichkina/bin/STAR_2.7.0/STAR-2.7.0e/bin/Linux_x86_64_static/STAR"
+$STARPATH --runThreadN 23 --runMode genomeGenerate --genomeDir $GENOMEDIR/STAR --genomeFastaFiles $GENOMEDIR/GRCh38.primary_assembly.genome.fa --sjdbGTFfile $GENOMEDIR/gencode.v29.primary_assembly.annotation.gtf
+```
