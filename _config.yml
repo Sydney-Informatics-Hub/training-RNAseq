@@ -10,18 +10,18 @@ port: 4100
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: "sp"
+carpentry: "si"
 
 # Overall title for pages.
-title: "SIH Training template FIXME 2"
-series_name: "FIXME Series 2"
+title: "RNA sequencing data analysis using R and the Artemis HPC"
+series_name: "SIH Bioinformatics Training"
 
 # What kind of thing is this ("workshop" or "lesson" or "series")?
 # IF THIS IS A LESSON, RENAME .lesson.index.md to index.md
 # IT IT IS A WORKSHOP, RENAME .workshop.index.md to index.md
 # IF THIS IS A SERIES, RENAME .series.index.md to index.md
 # THEN edit index.md!
-kind: "series"
+kind: "lesson"
 
 
 
@@ -29,9 +29,9 @@ kind: "series"
 # What software will students need to preinstall on their machines?
 bash: "no"
 git: "no"
-editor: "no"
+editor: "yes"
 python: "no"
-R: "no"
+R: "yes"
 sqlite: "no"
 openrefine: "no"
 
@@ -51,7 +51,7 @@ email: "sih.training@sydney.edu.au"
 sih_site: "https://informatics.sydney.edu.au"
 sih_github: "https://github.com/Sydney-Informatics-Hub"
 sih_pages: "https://sydney-informatics-hub.github.io"
-series_home: "https://informatics.sydney.edu.au/training/" #edit if you want to point to series landing page
+series_home: "https://sydney-informatics-hub.github.io/training-RNAseq/" #edit if you want to point to series landing page
 training_home: "https://informatics.sydney.edu.au/training/" # edit if you want to point somewhere else except for SIH
 
 # Carpentries sites
