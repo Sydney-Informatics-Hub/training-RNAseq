@@ -4,14 +4,14 @@ root: .  # Is the only page that don't follow the partner /:path/index.html
 permalink: index.html  # Is the only page that don't follow the partner /:path/index.html
 ---
 
-**RNA-seq data analysis in R:** 
+## RNA sequencing data analysis in R using the Artemis HPC
 
-This course provides an introduction on how to carry out RNA-seq data analysis using the Artemis HPC and R. We will cover the process:
+This course provides an introduction on how to carry out RNA-seq data analysis using the Artemis HPC and R. We will cover the processes of:
 
-1. From obtaining sequencing data (in fastq or other format) ...
-2. ... to generating a count table ...
-3. ... to a list of differentially expressed genes ...
-4. ... to the basics of pathway analysis
+1. Obtaining sequencing data (in fastq or other format) 
+2. Generating a count table
+3. Generating a list of differentially expressed genes 
+4. Pathway analysis basics
 
 
 
@@ -29,8 +29,6 @@ Students and staff in the life sciences who would like to analyse their own RNA-
 > 4. A terminal application, such as the built in terminal on a mac or linux machine, and gitbash for Windows.
 >
 >
-
-
 {: .prereq}
 
 
