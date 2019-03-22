@@ -1,0 +1,269 @@
+---
+title: "1. From Reads To a Count Table"
+subtitle: "Mapping reads"
+author: "Darya Vanichkina"
+date: "21/03/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Mapping the reads
+
+The next step of processing RNA-seq data is to map the reads to the reference genome (index we have just constructed). To do this, we will use STAR, and select several useful mapping options by using STAR flags. All possible flags that can be used are accessible via the [STAR manual](https://github.com/alexdobin/STAR/blob/master/doc/STARmanual.pdf), and we encourage you to explore them prior to running an analysis on your own data. 
+
+More specifically, we will take advantage of the following flags:
+
+- `--quantMode GeneCounts` - this is an incredibly useful flag, and tells STAR to count the reads mapping to genes we provide in the annotation file. 
+  - This is how we will get a count table for our data. The output file will have counts to genes as if our data was unstranded, "positively" and "negatively" stranded. If the data was generated using a strand-retaining protocol, one of these will be the appropriate parameter to use, while the other will provide an indication of the level of "antisense" transcription, usually a measure of how well the strand-selection protocol worked. If the number of reads mapping to genes in each of the count tables was similar, AND a stranded protocol was used, this may indicate that the stand selection did not work very well, and it may be more appropriate to treat the data as if it were *unstranded*!
+  - Previously, before STAR incorporated this functionality,  tools like [htseq-count](https://htseq.readthedocs.io/en/release_0.11.1/count.html) and [featureCounts](http://bioinf.wehi.edu.au/featureCounts/) were used to quantitate reads to genes, and some researchers prefer to use them to this day. However, for most users, STAR's quantification works just as well, and doesn't require installing/using/debugging additional tools.
+- `--outWigType wiggle` - this will also tell STAR to output a normalised, strand-specific wiggle file (if you want unnormalised or non-strand-specific, there are flags for this). This file can be converted to bigWig, and used to visualise the data in UCSC genome browser. 
+- `--outSAMattributes All` - output all flags in the last field of the sam file. Not essential for differential gene expression analysis, but very helfpul for mapping quality control (currently beyond the scope of this course).
+- `--outSAMtype BAM SortedByCoordinate` - this will produce a mapping file in which reads are sorted by coordinate, NOT read name. This is helpful as we can directly index the bam file using samtools, and proceed to visualise it in IGV, without needing to run samtools sort.
+- `--outReadsUnmapped Fastx` - will generate a fastq file of reads that STAR failed to map
+- `--outMultimapperOrder Random`
+- `--outSAMtype BAM SortedByCoordinate` - will output a compressed, coordinate-sorted bam, instead of a much larger unsorted sam file
+- `--outSAMattributes All` - will output all attributes in the last field of the sam file
+
+
+Note that for this lesson, we have not tweaked any of the flags dealing with "Output Filtering", "Output Filtering: Splice Junctions", "Scoring" and "Alignments and Seeding", as the default settings are suitable for our read length and aims (basic gene quantification). If you have longer/less than perfect data, or are interested in more challenging RNA seq analyses (splicing or novel transcript annotations, for example), you most likely will have to adjust these setting to be more/less stringent than the defaults.
+
+
+The following script will allow us to map the data on Artemis:
+
+```
+#! /bin/bash
+
+# specific to pbs
+#PBS -P MYTRAININGPROJECT
+#PBS -N starmapping
+#PBS -l select=1:ncpus=2:mem=45gb
+#PBS -l walltime=12:0:0
+
+
+# this remains the same for all jobs (specific to mapping)
+INPUTDIR="/home/dvanichkina/scratch/190321_RNAseqR/raw/"
+NCPU=2
+OUTDIR="/home/dvanichkina/scratch/190321_RNAseqR/star"
+GTFFILE="/home/dvanichkina/scratch/190321_RNAseqR/genome/gencode.v29.primary_assembly.annotation.gtf"
+GENOMEDIR="/home/dvanichkina/scratch/190321_RNAseqR/genome/STAR/"
+
+
+# Analysis script
+module load star
+# creates directory if it's not already there
+mkdir -p $OUTDIR
+cd $OUTDIR
+
+
+STAR \
+--outSAMattributes All \
+--outSAMtype BAM SortedByCoordinate \
+--quantMode GeneCounts \
+--readFilesCommand zcat \
+--runThreadN $NCPU \
+--sjdbGTFfile $GTFFILE \
+--outReadsUnmapped Fastx \
+--outMultimapperOrder Random \
+--outWigType wiggle \
+--genomeDir $GENOMEDIR \
+--readFilesIn ${INPUTDIR}/${OUTPREFIX}_1.fastq.gz ${INPUTDIR}/${OUTPREFIX}_2.fastq.gz \
+--outFileNamePrefix $OUTPREFIX
+```
+
+To submit it to the job queue, we can execute:
+
+```
+qsub -v OUTPREFIX="input29b_1" /home/dvanichkina/scratch/190321_RNAseqR/scripts/190322_starmapping.pbs
+```
+
+
+> ## Challenge
+>
+> Use the code above to map the input29b_1 dataset to the reference index for chromosome 19 that you built. 
+> Submit your job to the training queue.
+> 
+>
+>
+>: .challenge}
+
+## Assessing Artemis output file
+
+After the mapping is finished, Artemis generates 3 output files for us to report how the job went:
+
+- a jobname.e123456 error job file, which caputures the standard error that your script generated
+- a jobname.o123456 standard output job file, which captures any standard output that your script generated
+- a jobname.o123456_usage file, which says how many resources you requested, vs how many your job actually used
+
+We can view each of these files by using the `cat filename` command, and it is worthwhile looking at them to assess whether the job executed as planned (if it finished very quickly, most likely we made a mistake somewhere, and the error file is the best place to look to figure this out).
+
+When a STAR mapping job has run successfully, the error file is commonly empty, while the output file will look something like this:
+
+```
+Mar 22 13:21:06 ..... started STAR run
+Mar 22 13:21:06 ..... loading genome
+Mar 22 13:21:20 ..... processing annotations GTF
+Mar 22 13:21:37 ..... inserting junctions into the genome indices
+Mar 22 13:22:58 ..... started mapping
+Mar 22 13:47:53 ..... finished mapping
+Mar 22 13:47:56 ..... started sorting BAM
+Mar 22 14:24:34 ..... started wiggle output
+Mar 22 14:48:05 ..... finished successfully
+```
+
+And the output_usage file will look something like this:
+
+```
+-- Job Summary -------------------------------------------------------
+Job Id: 3076393.pbsserver for user myusername in queue normal
+Job Name: starmapping
+Project: myprojectname
+Exit Status: 0
+Job run as chunks (hpc145:ncpus=8:mem=47185920kb)
+Walltime requested:   48:00:00 :      Walltime used:   01:27:01
+                               :   walltime percent:       3.0%
+-- Nodes Summary -----------------------------------------------------
+-- node hpc145 summary
+    Cpus requested:          8 :          Cpus Used:       2.87
+          Cpu Time:   04:09:24 :        Cpu percent:      35.8%
+     Mem requested:     45.0GB :           Mem used:     45.0GB
+                               :        Mem percent:     100.0%
+                               
+-- WARNINGS ----------------------------------------------------------
+
+** Low Walltime utilisation.  While this may be normal, it may help to check the
+** following:
+**   Did the job parameters specify more walltime than necessary? Requesting
+**   lower walltime could help your job to start sooner.
+**   Did your analysis complete as expected or did it crash before completing?
+**   Did the application run more quickly than it should have? Is this analysis
+**   the one you intended to run?
+**
+** Low CPU utilisation on hpc145.  While this may be normal, it may help to check
+** the following:
+**   Did the job parameters specify too many cores?  Requesting fewer cores
+**   could help your job to start sooner.
+**   Did you use MPI and was the work distributed correctly? Correcting this
+**   could make your job to run faster without needing any more cores.
+**   Did the application use fewer cores than it should have? Is this analysis
+**   the one you intended to run?
+**
+** Excessive Memory utilisation on hpc145. While this may be normal, it may help to
+** check the following:
+**   Did the job parameters specify enough memory?
+**   Did your analysis complete successfully, or did it run out of RAM?
+**   Did you use MPI and was the work distributed correctly? Correcting this
+**   could allow your job to run using less RAM in each chunk.
+**   Did the application use more memory than it should have? Is this analysis
+**   the one you intended to run?
+**
+-- End of Job Summary ------------------------------------------------
+```
+
+In this case, while there are a LOT of warnings, what we can glean is that:
+
+- we could have asked for less walltime, as the job ran in 1.5 hours, not 48.
+    - `Walltime requested:   48:00:00 :      Walltime used:   01:27:01`
+- we should probably have asked for more memory, as we used 100% of what was available.
+    - ` Mem requested:     45.0GB :           Mem used:     45.0GB`
+- perhaps as a result of this, we only used ~3 cpu cores, instead of the 8 we requested.
+    - ` Cpus requested:          8 :          Cpus Used:       2.87`
+
+So no need to rerun the job, but perhaps ask for fewer cpus/walltime, and more memory the next time we run a similar job.
+
+> ## Challenge
+>
+> Assess how the mapping of chromosome 19 data went? 
+> How long did the job take? How many resources were used?
+> 
+>
+{: .challenge}
+
+
+## STAR output files
+
+STAR generates several files for each of the datasets. The core mapping files are:
+
+  - **DATASETNAME_Aligned.sortedByCoord.out.bam**: Mapped reads file, in [bam format](https://en.wikipedia.org/wiki/SAM_(file_format)). 
+  - **DATASETNAME_Log.final.out**:  Final mapping log. This tells us what proportion of the reads mapped, and provides overall mapping statistics for the entire dataset. We will explore this file below.
+  - **DATASETNAME_ReadsPerGene.out.tab**: This is our count table. We will explore it in the next section using R.
+
+The wig files, which can be useful for visualising the data in UCSC:
+
+  - **DATASETNAME_Signal.UniqueMultiple.str1.out.wig**
+  - **DATASETNAME_Signal.UniqueMultiple.str2.out.wig** 
+  - **DATASETNAME_Signal.Unique.str1.out.wig**
+  - **DATASETNAME_Signal.Unique.str2.out.wig** 
+
+Splice junction tables, which are essential if we are exploring alternative splicing (beyond the scope of this course):
+
+  - **DATASETNAME_SJ.out.tab**
+
+Unmapped reads, in fastq format:
+
+  - **DATASETNAME_Unmapped.out.mate1**
+  - **DATASETNAME_Unmapped.out.mate2**
+
+We would look at the files below if our mapping failed prior to completion, to try to understand why:
+
+- **DATASETNAME_Log.out**: "Real-time" mapping log. This file is written to on-the-fly during the mapping, and if the mapping has completed successfully, we usually do not need to look at this file. When there are issues with our mapping this can help us pinpoint "what broke".
+- **DATASETNAME_Log.progress.out**: "Real-time" mapping table log, which tells us how quickly reads were processed during the mapping in real time.
+
+
+## Interpreting the STAR Log.final.out
+
+If the mapping has completed successfully, STAR will generate an output log file, which has many summary statistics you are likely to need to include in your manuscript when you publish your results.
+
+Let's explore an example logfile:
+
+
+```
+#cat pull29b_1Log.final.out
+                                 Started job on |	Feb 09 21:20:56
+                             Started mapping on |	Feb 09 21:35:08
+                                    Finished on |	Feb 09 22:00:38
+       Mapping speed, Million of reads per hour |	177.48
+
+                          Number of input reads |	75430895
+                      Average input read length |	200
+                                    UNIQUE READS:
+                   Uniquely mapped reads number |	59898883
+                        Uniquely mapped reads % |	79.41%
+                          Average mapped length |	192.61
+                       Number of splices: Total |	17307912
+            Number of splices: Annotated (sjdb) |	17117537
+                       Number of splices: GT/AG |	17118573
+                       Number of splices: GC/AG |	123805
+                       Number of splices: AT/AC |	14790
+               Number of splices: Non-canonical |	50744
+                      Mismatch rate per base, % |	0.82%
+                         Deletion rate per base |	0.01%
+                        Deletion average length |	1.62
+                        Insertion rate per base |	0.04%
+                       Insertion average length |	1.44
+                             MULTI-MAPPING READS:
+        Number of reads mapped to multiple loci |	3146431
+             % of reads mapped to multiple loci |	4.17%
+        Number of reads mapped to too many loci |	23748
+             % of reads mapped to too many loci |	0.03%
+                                  UNMAPPED READS:
+       % of reads unmapped: too many mismatches |	0.00%
+                 % of reads unmapped: too short |	16.37%
+                     % of reads unmapped: other |	0.02%
+```
+
+The first "paragraph" shows you information about when you ran your mapping and how fast it went, which is usually not very informative for analysis.
+
+The second block shows that we had 75430895 reads in the dataset, and that they were 2x100 = 200 nucleotides long.
+
+After this, the number (59898883) and proportion (79.41%) of uniquely mapped reads is reported, as is the average mapped length (192.61), which indicates that on average 192.61/200 bases of our read pairs were mapped to the genome. Ideally, you want this ratio to be 75% or greater.
+
+The total number of splice junctions detected is reported (17307912), with the vast majority of them corresponding to splice sites observed in the annotation (17117537) [We can figure this out by doing 17117537/17307912 = 98.9% , i.e. 99% of the splice junctions that were observed in the dataset were annotated in GENCODE]. Low numbers of annotated splice junctions in a well-characterised species like human can indicate either poor quality library prep or DNAse contamintation, although they are also characteristic when using STAR to map long-read sequencing data. 
+
+The mismatch rate 
+
+
+FIXME
+
