@@ -1,6 +1,5 @@
 ---
-title: "1. From Reads To a Count Table"
-subtitle: "Assessing the quality of your sequencing data"
+title: "Assessing the quality of your sequencing data"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document

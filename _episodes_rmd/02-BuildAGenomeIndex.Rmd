@@ -1,6 +1,5 @@
 ---
-title: "1. From Reads To a Count Table"
-subtitle: "Building a genome index"
+title: "Building a genome index"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document

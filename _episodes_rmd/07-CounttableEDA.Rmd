@@ -1,0 +1,355 @@
+---
+title: "Exploratory data analysis of a count table"
+author: "Darya Vanichkina"
+date: "21/03/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# load libraries
+library(tidyverse)
+library(edgeR)
+theme_set(theme_minimal())
+# load data
+counttablefull <- readRDS("processeddata/counttablefull.Rds")
+```
+
+Now that we've identified that the library was generated in a strand-specific manner, we can drop the irrelevant ("unstranded", "forwardstrand") columns of our `counttablefull` dataframe. Check that we have 13 columns in the resulting dataframe (12 count, 1 gene name).
+
+```{r dropcols}
+counttablefull <- counttablefull %>% 
+  select(-ends_with("unstranded"), -ends_with("forwardstrand")) %>%
+  rename_all(funs(gsub("_reversestrand", "", make.names(names(counttablefull)))))
+dim(counttablefull)
+```
+
+
+Lets visualise the count data:
+
+```{r Visi1}
+counttablefull %>%
+  select(-ensembl_gene) %>%
+  gather(library, value) %>%
+  ggplot(aes(x = value)) + geom_histogram(bins = 100) + facet_wrap(~library)
+
+```
+
+We can clearly see that BY FAR most genes have NO counts. Let's filter these out first, and visualise again:
+
+```{r density}
+counttablefull %>%
+  select(-ensembl_gene) %>%
+  gather(library, value) %>%
+  filter(value > 0) %>% 
+  ggplot(aes(x = value)) + geom_density() + facet_wrap(~library) 
+```
+
+We still see that most genes have very low counts. One way to visualise this better is to log-transform the x-axis:
+
+```{r densityLog}
+counttablefull %>%
+  select(-ensembl_gene) %>%
+  gather(library, value) %>%
+  filter(value > 0) %>% 
+  ggplot(aes(x = value)) + geom_density() + facet_wrap(~library) + scale_x_log10()
+```
+
+This allows us to see that for most datasets, there are many genes that have ~10 counts each, and ~100 counts, as well as some genes with very low, and some genes with very high counts.
+
+
+> ## Challenge 1
+>
+> Use ggplot to make a boxplot of the data above. Is the median number of in each sample what you thought
+> it might be based on the density plots above?
+>
+> 
+> {: .source}
+>
+> > ## Solution
+> > 
+> > ~~~
+> > counttablefull %>%
+> >   select(-ensembl_gene) %>%
+> >   gather(library, value) %>%
+> >   filter(value > 0) %>% 
+> >   ggplot(aes(y = value)) + geom_boxplot() + facet_wrap(~library) 
+> > 
+> > ~~~
+> > 
+> > {: .output}
+> {: .solution}
+{: .challenge}
+
+Genes with very low expression levels:
+
+1. Are impossible to accurately assess for differential expression
+2. Add to the multiple testing burden, thereby reducing the power to detect truly differentially expressed genes
+
+## Filtering out lowly expressed genes
+
+We will use the `cpm()` function from the `edgeR` library to filter out lowly expressed genes. CPM stands for counts per million, and allows us to normalise for the very different library depths characteristic of our datasets.
+
+```{r cpm}
+# best to convert to a matrix, as edgeR expects a matrix of counts or a DGEList object as input
+counttablematrix <- counttablefull %>%
+  select(-ensembl_gene) %>%
+  as.matrix()
+
+row.names(counttablematrix) <- counttablefull$ensembl_gene
+counttable_cpm <- cpm(counttablematrix)
+
+head(counttable_cpm)
+```
+
+
+As a good rule of thumb, we want to filter out genes that have counts less than 10-15 reads in our raw data. 
+
+Let's figure out how many reads that would be given our library depth. Also, since we're looking at a pulldown experiment, it makes sense for us to develop this cutoff on the input samples (!):
+
+
+```{r}
+counttablefull %>%
+  select(-ensembl_gene) %>%
+  summarise_each(funs(sum)) %>%  # gather wide data (columns) into a long table
+  gather(library, counts) %>%  # split library column into dataset and protocol
+  mutate(millionreads = counts/(10^6)) %>%
+  mutate(cpmThreshold = 15/millionreads) %>%
+  filter(str_detect(library, 'input')) %>%
+  mutate(mycutoff = 0.6 * millionreads)
+```
+
+A cutoff of 0.6 seems reasonable.
+
+
+Let's generate a matrix with which we can subset the cpm matrix, which will have a value of TRUE for which at least 3 samples meet the required criteria:
+
+```{r}
+subsetting_matrix <- counttable_cpm > 0.6
+head(subsetting_matrix)
+```
+
+```{r}
+subsetting_vector <- rowSums(subsetting_matrix) >= 3
+head(subsetting_vector)
+```
+We have made a vector with which we can now subset the counttablematrix.
+
+```{r}
+counttablematrix_filt <- counttablematrix[subsetting_vector,]
+dim(counttablematrix_filt)
+```
+
+This has resulted in `r dim(counttablematrix_filt)[1]`  of `r dim(counttablematrix)[1]` genes remaining for differential expression testing.
+
+
+We can now convert it to a DGEList object (which stands for a "digital gene expression list"), to enable some critical quality control data analysis and subsequent differential gene expression.
+
+## Convert to DGEList
+
+```{r}
+mydgelist <- DGEList(counttablematrix_filt)
+
+mydgelist
+```
+
+```{r}
+head(mydgelist$samples)
+```
+
+How different are the library depths after filtering?
+
+```{r}
+mydgelist$samples %>% 
+  as.data.frame() %>%
+  rownames_to_column() %>%
+  separate(rowname, into = c("treatment", "replicate"), sep="_") %>%
+  ggplot(aes(y = lib.size, x = treatment, fill = replicate)) +geom_bar(stat = "identity", position = "dodge") 
+```
+
+We can see that there is no substantial difference from our visualisation of the unfiltered data in the previous section.
+
+
+To visualise whether there is a difference in the distribution of raw counts, we can normalise by library depth to counts per million, and apply a log2 transformation to better see the distribution:
+
+
+
+
+```{r}
+mydgelist_cpm <- cpm(mydgelist, log = TRUE)
+boxplot(mydgelist_cpm)
+abline(h=median(mydgelist_cpm),col="blue")
+title("Boxplots of logCPMs (unnormalised)")
+```
+
+We can also use ggplot to create a publication-quality version of the above plot:
+
+```{r}
+mydgelist_cpm %>% 
+  as.data.frame() %>%
+  rownames_to_column() %>%
+  gather(library, log2cpm, -rowname) %>%
+  separate(library, into = c("treatment", "replicate"), sep = "_") %>%
+  ggplot(aes(x = treatment, y = log2cpm, fill = replicate)) + geom_boxplot() +
+  geom_hline(yintercept = median(mydgelist_cpm), lty = 2)
+```
+
+
+## Essential quality control: most of the variability in your data should be explained by the conditions you are trying to investigate
+
+[Principle components analysis (PCA)](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/) is an approach to dimensionality reduction which aims to identify a combination of the set of variables in your data (in this case: a grouping of many, many genes), which together explain most of the variability in your data. 
+
+In the context of differential expression analysis (or, really, ANY kind of differential RNA analysis), we expect that most of the variability in our data is explained by the conditions we perturbed (i.e treatment vs control, disease vs normal etc). If this is not the case, and distinct samples are grouped together, this indicates that a differential expression analysis is likely to be unreliable, since this analysis specifically looks at the *variance* in the expression of genes in the different libraries.
+
+PCA allows for the unbiased identification of batch effects, which then need to be taken into account in the experimental design, and potentially reveals samples to exclude, if only one or two are "grouping" the wrong way.
+
+```{r}
+library(factoextra)
+res.pca <- prcomp(t(mydgelist_cpm))
+colors <- as.factor(str_split(rownames(mydgelist$samples), "_", simplify = TRUE)[,1])
+fviz_pca_ind(res.pca,
+             col.ind = colors,
+             palette = "Set1",
+             repel = TRUE,    # Avoid text overlapping
+             title = "PCA plot of human data"
+             )
+```
+
+
+We can also generate a "scree" plot, which shows what proportion of variance is explained by each of the components. We can see that PC1 captures by far the most variance.
+
+```{r}
+fviz_eig(res.pca, addlabels = TRUE)
+```
+
+
+We can also see that, as is common in most biological experiments (but not other types of data analysis), it's not one gene that contributes strongly to each of the principle components, but many, many genes, that each contribute a tiny bit (< 0.1% !):
+
+```{r}
+fviz_contrib(res.pca, choice = "var", axes = 1, top = 100)
+```
+
+
+
+
+limma supports the creation of a multidimensional scaling (MDS) plot, which is similar to a [PCA analysis](https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional_). It takes into account only the 500 most variable genes in the dataset.
+
+
+```{r}
+plotMDS(mydgelist)
+```
+
+```{r}
+# We can also add labels and colour to this plot
+plotMDS(mydgelist,col= c("red","purple","blue","orange")[colors])
+legend("topright",fill=c("red","purple","blue","orange"),legend=levels(colors))
+
+```
+
+
+The distance between each pair of samples in the MDS plot is called the "leading fold change": the root-mean-square of the largest 500 log2-fold changes between that pair of samples. In this case, we can see that the distance between the pull_29b samples and the input ones is 
+
+In the MDS plot, the distance between the input samples (approximately -1 on logFC dim 1) and pull29b samples (+2.5) is approximately 3.5 units, which corresponds to a leading fold-change of 2^3.5 = 11.3 between input and specific pulldown. Differences between input and non-specific pulldown (~3 fold) are substantially less.
+
+Reassuringly, all of the input samples group together, indicating that addition of a specific or non-specific oligonucleotide did not substantially affect the RNA sample (i.e. the input is truly an input!).
+
+
+
+
+![batchEffect.png](../fig/batchEffect.png)
+
+> ## Challenge 2
+>
+> The panel above shows the experimental results from [a Bioconductor support question](https://support.bioconductor.org/p/111491/). 
+> Imagine that this was the PCA plot you got in one of your experiments.
+>
+>
+> Assume that:
+> - you observe this result on your highly expressed genes (not all genes)
+> - condition (color) is what you care about
+> - batch (shape) indicates the days on which you did the experiment
+>
+> 1. Do you think there is a batch efect in the data? 
+> 2. The author has carried out batch correction. Do you think it was accurate?
+> 3. Do you think the differential expression will be accurate in this sample?
+> 4. If this was the PCA you observed, what would you do next?
+>
+> 
+>
+{: .challenge}
+
+
+
+## Heatmaps of the most variable genes
+
+Another helpful visualisation that can assist with understanding the relationship between sequenced datasets uses heirarchical clustering, another unsupervised learning technique. It is designed to group together "more similar" samples based on a distance metric, calculated in n-dimensional space. 
+
+In our case, every sample (i.e. library) is captured in the n-dimensional (`r dim(counttablematrix_filt)[1]`-dimensional!) space, where very gene is a dimension! /Talk about the need for dimensionality reduction!/
+
+
+First, we need to generate a dataframe of most variable genes. 
+
+
+```{r mostVarGenes}
+most_var_genes <- sort(apply(mydgelist_cpm, 1, var), decreasing=TRUE)[1:500]
+mydgelist_cpm_most_var <- mydgelist_cpm[most_var_genes,] 
+```
+
+Use the pheatmap library to visualise:
+
+```{r}
+library(pheatmap)
+pheatmap(mydgelist_cpm_most_var, show_rownames  = FALSE) # hiding rownames as there are 500 undreadable ones
+```
+
+
+Calclulate a z-score instead of colouring by log2 expression level:
+
+```{r}
+my_z_score <- function(x){
+  return( (x - mean(x)) / sd(x))
+}
+
+mydgelist_cpm_most_var2 <-  t(apply(mydgelist_cpm_most_var, 1, my_z_score))
+pheatmap(mydgelist_cpm_most_var2, show_rownames  = FALSE)
+
+
+```
+
+
+
+> ## Challenge 3
+>
+> Consider what happens when we use all of the genes. How do the libraries cluster?
+>
+> 
+> {: .source}
+>
+> > ## Solution
+> > 
+> > ~~~
+> > 
+> > mydgelist_cpm2 <-  t(apply(mydgelist_cpm, 1, my_z_score))
+> > pheatmap(mydgelist_cpm2, show_rownames  = FALSE)
+> > 
+> > ~~~
+> > 
+> > {: .output}
+> {: .solution}
+{: .challenge}
+
+
+
+<!-- ### If continuing from the Artemis section -->
+
+<!-- To download the data from the server, open another terminal window on your machine and enter: -->
+
+<!-- ``` -->
+<!-- cd  -->
+<!-- scp yourusername@hpc.sydney.edu.au:/project/Training/yourname/star/*ReadsPerGene.out.tab . -->
+<!-- ``` -->
+
+
+
+
+
