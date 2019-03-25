@@ -3,6 +3,20 @@ title: "Differential gene expression analysis"
 author: "Darya Vanichkina"
 date: "25/03/2019"
 output: html_document
+exercises: 20
+keypoints: 
+- In this section, we have carried out differential gene expression analysis
+- We can use both built-in visualisations with limma, as well as external R packages
+objectives: 
+- Carry out DGEA
+questions: 
+- How can we carry out DGEA on a count table
+- How can we make volcano plots and venn diagrams in R?
+- How do we annotate our count table?
+- How can we make publication-quality graphics?
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 ```{r setup, include=FALSE}

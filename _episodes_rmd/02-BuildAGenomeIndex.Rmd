@@ -3,6 +3,19 @@ title: "Building a genome index"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document
+exercises: 0
+keypoints: 
+- Mapping RNA-seq data requires using splicing-aware mappers.
+- The first step of mapping sequencing data is to build a genome index.
+- This involves figuring out which reference file and annotation you need, and making sure the chromosome names in them match
+objectives: 
+- Use STAR to build a genome index for mapping.
+questions: 
+- What is the first step of mapping data?
+- How do I find reference genomes and transcriptomes for my species?
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 ```{r setup, include=FALSE}

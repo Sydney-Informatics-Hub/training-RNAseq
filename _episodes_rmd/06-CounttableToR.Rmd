@@ -3,6 +3,18 @@ title: "Loading a count table into R"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document
+exercises: 0
+keypoints: 
+- We have loaded our count table into R, and set up an RStudio project
+- We have identified that the data was generated in a strand-specific manner
+objectives: 
+- Load data into R
+questions: 
+- How do we get our count table into R?
+- Was our data generated in a strand-specific manner?
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 ```{r setup, include=FALSE}

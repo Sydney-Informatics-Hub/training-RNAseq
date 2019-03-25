@@ -3,6 +3,23 @@ title: "Exploratory data analysis of a count table"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document
+exercises: 0
+keypoints: 
+- We must filter out lowly expressed genes prior to DGEA
+- Prior to any DGEA, we must take advantage of unsupervised learning techniques to ensure that no batch effects or other confounding issues affect our experiment as a whole
+- PCA and heirarchical clustering can be used to achieve this
+- If there are issues with the PCA and/or clustering, while a list of genes will still be reported in the differential expression, it will most NOT be reliable or accurate, as these issues need to be taken into account
+- There are tools in R to take into account both understood (different time points) and inexplicable batch effects
+objectives: 
+- Filter out lowly expressed genes (and understandw why this is essential for DE)
+- Use PCA and clustering to assess batch effects and overall experiment reliability
+- Visualise PCA, MDS and heatmap plots
+questions: 
+- How do we filter out lowly expressed genes?
+- How can we reveal batch effects in our data?
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 ```{r setup, include=FALSE}
@@ -210,6 +227,8 @@ mydgelist_cpm %>%
 
 ## Essential quality control: most of the variability in your data should be explained by the conditions you are trying to investigate
 
+### PCA
+
 [Principle components analysis (PCA)](http://www.sthda.com/english/articles/31-principal-component-methods-in-r-practical-guide/118-principal-component-analysis-in-r-prcomp-vs-princomp/) is an approach to dimensionality reduction which aims to identify a combination of the set of variables in your data (in this case: a grouping of many, many genes), which together explain most of the variability in your data. 
 
 In the context of differential expression analysis (or, really, ANY kind of differential RNA analysis), we expect that most of the variability in our data is explained by the conditions we perturbed (i.e treatment vs control, disease vs normal etc). If this is not the case, and distinct samples are grouped together, this indicates that a differential expression analysis is likely to be unreliable, since this analysis specifically looks at the *variance* in the expression of genes in the different libraries.
@@ -250,6 +269,7 @@ fviz_contrib(res.pca, choice = "var", axes = 1, top = 100)
 
 limma supports the creation of a multidimensional scaling (MDS) plot, which is similar to a [PCA analysis](https://stats.stackexchange.com/questions/14002/whats-the-difference-between-principal-component-analysis-and-multidimensional_). It takes into account only the 500 most variable genes in the dataset.
 
+### MDS
 
 ```{r}
 plotMDS(mydgelist)
@@ -296,7 +316,7 @@ Reassuringly, all of the input samples group together, indicating that addition 
 
 
 
-## Heatmaps of the most variable genes
+## Heirarchical clustering to generate heatmaps of the most variable genes
 
 Another helpful visualisation that can assist with understanding the relationship between sequenced datasets uses heirarchical clustering, another unsupervised learning technique. It is designed to group together "more similar" samples based on a distance metric, calculated in n-dimensional space. 
 
