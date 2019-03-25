@@ -12,7 +12,7 @@ theme_set(theme_minimal())
 ```
 
 
-
+<!-- FIXME add 04-bamqc.Rmd and 05-visualisation_in_genome_browser.Rmd  -->
 
 The STAR-generated count table is called `DATASETNAME_ReadsPerGene.out.tab`. We can download it from our HPC server, load it into R, and explore it using standard R libraries.
 
@@ -172,7 +172,7 @@ saveRDS(counttablefull, "processeddata/counttablefull.Rds")
 
 
 
-<!-- ### If continuing from the Artemis section -->
+<!-- ### If continuing from the Artemis section - FIXME -->
 
 <!-- To download the data from the server, open another terminal window on your machine and enter: -->
 

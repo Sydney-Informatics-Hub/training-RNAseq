@@ -83,10 +83,10 @@ qsub -v OUTPREFIX="input29b_1" /home/dvanichkina/scratch/190321_RNAseqR/scripts/
 >
 > Use the code above to map the input29b_1 dataset to the reference index for chromosome 19 that you built. 
 > Submit your job to the training queue.
-> 
 >
 >
->: .challenge}
+>{: .challenge}
+
 
 ## Assessing Artemis output file
 
@@ -261,8 +261,20 @@ After this, the number (59898883) and proportion (79.41%) of uniquely mapped rea
 
 The total number of splice junctions detected is reported (17307912), with the vast majority of them corresponding to splice sites observed in the annotation (17117537) [We can figure this out by doing 17117537/17307912 = 98.9% , i.e. 99% of the splice junctions that were observed in the dataset were annotated in GENCODE]. Low numbers of annotated splice junctions in a well-characterised species like human can indicate either poor quality library prep or DNAse contamintation, although they are also characteristic when using STAR to map long-read sequencing data. 
 
-The mismatch rate 
+The mismatch, insertion and deletion rates also reflect how well along the length of the read based aligned to the genome. Finally, the number and proportion of reads mapping to multiple loci in the genome and unmapped reads is reported.
 
 
-FIXME
+> ## Challenge
+>
+> Assess how your chromosome 19 mapping went. 
+> 1. How many resources were used?
+> 2. Did any errors occur?
+> 3. What proportion of reads were uniquely mapped?
+> 4. What else did you learn from the count logs? 
+>
+>
+{: .challenge}
 
+
+
+<!-- FIXME describe how multiple vs too many are different -->

@@ -143,6 +143,14 @@ dim(counttablematrix_filt)
 This has resulted in `r dim(counttablematrix_filt)[1]`  of `r dim(counttablematrix)[1]` genes remaining for differential expression testing.
 
 
+<!-- How much of a difference does it make? -->
+
+<!-- ```{r} -->
+<!-- # plot a density plot of counttablematrix counts and counttablematrix_filt counts (log_cpm) -->
+<!-- ``` -->
+
+
+
 We can now convert it to a DGEList object (which stands for a "digital gene expression list"), to enable some critical quality control data analysis and subsequent differential gene expression.
 
 ## Convert to DGEList
@@ -151,6 +159,7 @@ We can now convert it to a DGEList object (which stands for a "digital gene expr
 mydgelist <- DGEList(counttablematrix_filt)
 
 mydgelist
+
 ```
 
 ```{r}
@@ -339,15 +348,11 @@ pheatmap(mydgelist_cpm_most_var2, show_rownames  = FALSE)
 {: .challenge}
 
 
+```{r echo=F}
+saveRDS(mydgelist, "processeddata/mydgelist.Rds")
+saveRDS(colors, "processeddata/colors.Rds")
+```
 
-<!-- ### If continuing from the Artemis section -->
-
-<!-- To download the data from the server, open another terminal window on your machine and enter: -->
-
-<!-- ``` -->
-<!-- cd  -->
-<!-- scp yourusername@hpc.sydney.edu.au:/project/Training/yourname/star/*ReadsPerGene.out.tab . -->
-<!-- ``` -->
 
 
 
