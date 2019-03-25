@@ -31,8 +31,9 @@ Students and staff in the life sciences who would like to analyse their own RNA-
 >
 {: .prereq}
 
-{% include syllabus.html %}
+[Introductory slides](https://sydney-informatics-hub.github.io/training-RNAseq-slides/01_IntroductionToRNASeq/01_IntroductionToRNASeq.html#1)
 
+{% include syllabus.html %}
 
 
 {% include links.md %}
