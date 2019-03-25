@@ -5,6 +5,22 @@ title: "Basic pathway analysis using ToppGene"
 author: "Darya Vanichkina"
 date: "25/03/2019"
 output: html_document
+exercises: 10
+keypoints: 
+- Exploratory pathway analysis can be performed using a wide range of online tools
+- ToppGene allows us to quickly assess what's going on in our data
+- If a formal pathway analysis needs to be carried out, tools like goana and camera nicely fit within the limma ecosystem
+objectives: 
+- Quickly assess whether our experiment worked, i.e. was able to enrich for miR29b targets
+- Introduce ToppGene and interpret it's output
+- Mention other approaches to pathway analysis
+questions: 
+- How do we quickly assess what the gene list we obtained actually means?
+- What online tools can we use for pathway analysis? 
+- What are the limitations of online pathway analysis tools?
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 

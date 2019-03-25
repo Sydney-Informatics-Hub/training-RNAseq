@@ -5,7 +5,22 @@ title: "Map reads"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document
-questions: LALALA
+exercises: 0
+keypoints: 
+- STAR is used to map the reads on Artemis
+objectives: 
+- Map data on Artemis using STAR.
+- Choose optimal mapping and PBS pro parameters.
+- Interpret the mapping output and PBS job run logs.
+
+questions: 
+- How do I map my data on Artemis HPC?
+- What is a PBS script?
+- How do I interpret the PBS logs
+- How do I interpret the mapping logs? 
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 

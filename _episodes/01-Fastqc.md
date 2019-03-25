@@ -5,6 +5,16 @@ title: "Assessing the quality of your sequencing data"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document
+exercises: 0
+keypoints: 
+- fastqc is the first step in any sequencing data analysis when working with fastq files
+objectives: 
+- Assess the quality of our raw sequencing data
+questions: 
+- What is the first step of any sequencing data analysis?
+source: Rmd
+start: 0
+teaching: 30
 ---
 
 
