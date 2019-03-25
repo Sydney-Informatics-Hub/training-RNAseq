@@ -6,7 +6,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+source("../bin/chunk-options.R")
+knitr_fig_path("08-")
+
 # load libraries
 library(tidyverse)
 library(edgeR)
@@ -16,6 +18,8 @@ theme_set(theme_minimal())
 # load data
 counttablefull <- readRDS("processeddata/counttablefull.Rds")
 mydgelist <- readRDS("processeddata/mydgelist.Rds")
+
+
 colors <- readRDS("processeddata/colors.Rds")
 ```
 

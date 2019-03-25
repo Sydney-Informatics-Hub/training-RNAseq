@@ -6,7 +6,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+source("../bin/chunk-options.R")
+knitr_fig_path("09-")
+
 ```
 
 The most basic approach to pathway analysis of RNA-seq data involves:

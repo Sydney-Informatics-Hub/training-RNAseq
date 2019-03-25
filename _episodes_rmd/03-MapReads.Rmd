@@ -3,10 +3,13 @@ title: "Map reads"
 author: "Darya Vanichkina"
 date: "21/03/2019"
 output: html_document
+questions: LALALA
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+source("../bin/chunk-options.R")
+knitr_fig_path("03-")
+
 ```
 
 ## Mapping the reads
@@ -85,7 +88,8 @@ qsub -v OUTPREFIX="input29b_1" /home/dvanichkina/scratch/190321_RNAseqR/scripts/
 > Submit your job to the training queue.
 >
 >
->{: .challenge}
+>
+{: .challenge}
 
 
 ## Assessing Artemis output file

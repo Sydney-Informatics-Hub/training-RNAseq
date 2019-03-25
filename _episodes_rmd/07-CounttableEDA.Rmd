@@ -6,7 +6,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+source("../bin/chunk-options.R")
+knitr_fig_path("07-")
+
 # load libraries
 library(tidyverse)
 library(edgeR)
@@ -19,8 +21,9 @@ Now that we've identified that the library was generated in a strand-specific ma
 
 ```{r dropcols}
 counttablefull <- counttablefull %>% 
-  select(-ends_with("unstranded"), -ends_with("forwardstrand")) %>%
-  rename_all(funs(gsub("_reversestrand", "", make.names(names(counttablefull)))))
+  select(-ends_with("unstranded"), -ends_with("forwardstrand")) 
+names(counttablefull) <- str_replace(names(counttablefull), "_reversestrand", "")
+
 dim(counttablefull)
 ```
 
@@ -111,7 +114,8 @@ Let's figure out how many reads that would be given our library depth. Also, sin
 ```{r}
 counttablefull %>%
   select(-ensembl_gene) %>%
-  summarise_each(funs(sum)) %>%  # gather wide data (columns) into a long table
+  purrr::modify(~sum(.)) %>% 
+  distinct() %>%
   gather(library, counts) %>%  # split library column into dataset and protocol
   mutate(millionreads = counts/(10^6)) %>%
   mutate(cpmThreshold = 15/millionreads) %>%
@@ -234,8 +238,11 @@ fviz_eig(res.pca, addlabels = TRUE)
 
 We can also see that, as is common in most biological experiments (but not other types of data analysis), it's not one gene that contributes strongly to each of the principle components, but many, many genes, that each contribute a tiny bit (< 0.1% !):
 
-```{r}
+```{r fvizPCA}
 fviz_contrib(res.pca, choice = "var", axes = 1, top = 100)
+
+
+
 ```
 
 

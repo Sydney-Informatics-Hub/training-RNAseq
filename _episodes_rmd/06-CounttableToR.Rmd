@@ -6,9 +6,12 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+source("../bin/chunk-options.R")
+knitr_fig_path("06-")
+
 library(tidyverse)
 theme_set(theme_minimal())
+
 ```
 
 
@@ -44,6 +47,8 @@ After you have created a new Rscript, you should see something that looks like t
 
 ### If starting the workshop at this point
 
+1. Make a data folder
+2. Download and unarchive the following [archive](https://figshare.com/articles/Counttables/7886549).
 
 ```{r loadData}
 library(tidyverse)

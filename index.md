@@ -4,7 +4,7 @@ root: .  # Is the only page that don't follow the partner /:path/index.html
 permalink: index.html  # Is the only page that don't follow the partner /:path/index.html
 ---
 
-## RNA sequencing data analysis in R using the Artemis HPC
+
 
 This course provides an introduction on how to carry out RNA-seq data analysis using the Artemis HPC and R. We will cover the processes of:
 
@@ -30,6 +30,9 @@ Students and staff in the life sciences who would like to analyse their own RNA-
 >
 >
 {: .prereq}
+
+{% include syllabus.html %}
+
 
 
 {% include links.md %}
